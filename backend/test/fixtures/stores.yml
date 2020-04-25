@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  name: MyString
+  type: 
+  hasPharmacy: false
+  street: MyString
+  city: MyString
+  county: MyString
+  state_name: MyString
+  zip: MyString
+
+two:
+  number: 1
+  name: MyString
+  type: 
+  hasPharmacy: false
+  street: MyString
+  city: MyString
+  county: MyString
+  state_name: MyString
+  zip: MyString

@@ -1,0 +1,65 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sku: 1
+  name: MyString
+  description: MyString
+  brand: MyString
+  size_value: 1
+  size_unit: MyString
+  countryOfOrigin: MyString
+  disclaimer: MyString
+  isRaw: false
+  isMsgFree: false
+  isAntibioticFree: false
+  isCornFree: false
+  isLactoovoVegetarian: false
+   isFairtrade: false
+   isIrradiated: false
+   isCertifiedHumane: false
+   isWildCaught: false
+   hasNoAddedHormone: false
+  alcohol: MyString
+  diets: MyString
+  hasNoAddedHormones: false
+  additives: MyString
+  allergens: MyString
+  ingredients: MyString
+  nutrients: MyString
+  preparation: MyString
+  servings: MyString
+  tradeIdentifiers_image: MyString
+  tradeIdentifiers_barcode: MyString
+  category_id: 1
+
+two:
+  sku: 1
+  name: MyString
+  description: MyString
+  brand: MyString
+  size_value: 1
+  size_unit: MyString
+  countryOfOrigin: MyString
+  disclaimer: MyString
+  isRaw: false
+  isMsgFree: false
+  isAntibioticFree: false
+  isCornFree: false
+  isLactoovoVegetarian: false
+   isFairtrade: false
+   isIrradiated: false
+   isCertifiedHumane: false
+   isWildCaught: false
+   hasNoAddedHormone: false
+  alcohol: MyString
+  diets: MyString
+  hasNoAddedHormones: false
+  additives: MyString
+  allergens: MyString
+  ingredients: MyString
+  nutrients: MyString
+  preparation: MyString
+  servings: MyString
+  tradeIdentifiers_image: MyString
+  tradeIdentifiers_barcode: MyString
+  category_id: 1
