@@ -4,4 +4,8 @@ class Category < ApplicationRecord
     has_many :categories
     has_many :products 
     has_many :offers, through: :products
+
+    def self.mainCategories
+       where(level: 1)
+    end
 end

@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
+
 
 
 const Stores = (props) => {
@@ -15,8 +17,7 @@ const Stores = (props) => {
 
     return(
         <div>
-         {props.stores.map((store)=> <p>{store.name}</p>)}
-            
+         {props.stores.map((store)=> <p><Link to={`/stores/${store.id}`}>{store.name}</Link></p>)}
         </div>
     )
 }
