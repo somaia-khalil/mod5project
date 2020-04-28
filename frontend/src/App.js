@@ -30,8 +30,6 @@ function App() {
          <Route exact path="/stores/:id" render={(routerProps) => <StoreDetails {...routerProps}/>} ></Route>
          <Route exact path="/offers/:id" render={(routerProps) => <OfferDetails {...routerProps}/>} ></Route>
          <Route  path="/"><StoreCards/></Route>
-         {/* <LoginForm/> */}
-         {/* <SignupForm/> */}
          </Switch>
       </Router>
   </div>

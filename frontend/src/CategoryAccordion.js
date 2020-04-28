@@ -9,7 +9,6 @@ import { Container } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
 
-import OfferCards from './OfferCards';
 import CategorySlider from './CategorySlider';
 
 
@@ -33,7 +32,7 @@ const CategoryAccordion = (props) => {
     <Accordion.Collapse eventKey={category.id}>
       <Card.Body>
 
-         { category.categories && category.categories.length > 0 ? <CategoryAccordion store={props.store} categories={category.categories} /> : <CategorySlider/>}
+         { category.categories && category.categories.length > 0 ? <CategoryAccordion store={props.store} categories={category.categories} /> : <CategorySlider store={props.store} category={category}/>}
 
      </Card.Body>
     </Accordion.Collapse>

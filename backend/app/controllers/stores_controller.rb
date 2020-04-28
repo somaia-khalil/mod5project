@@ -20,7 +20,7 @@ class StoresController < ApplicationController
     def category_show
         category = Category.find_by(id: params[:category_id])
         offers = @store.getOffersByCategory(category)
-        render json:  {category: category , offers: offers , categories: category.categories}
+        render json: offers
     end
 
     def category_index

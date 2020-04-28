@@ -2,7 +2,8 @@
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import React, {  useState, useEffect } from 'react';
-import Product from './Product'
+import Product from './Product';
+import OfferCard from './OfferCard';
 
 
 import Slider from "react-slick";
@@ -10,17 +11,18 @@ import { Container } from 'react-bootstrap';
 
 
 const StoreCategory = (props) => {
-/* 
-   const [category, setCategory] = useState({ offers: [], categories:[] });
+
+ 
+   const [offers, setOffers] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/stores/${props.match.params.id}/categories/${props.match.params.categoryId}`)
+        fetch(`http://localhost:3000/stores/${props.store}/categories/${props.category.id}`)
           .then(res => res.json())
-          .then(category => {
-           setCategory(category)
+          .then(offers => {
+           setOffers(offers)
           })
-      },[props.match.params.categoryId,props.match.params.id])
-    */
+      },[props.category,props.store])
+
 
 
 const settings = {
@@ -40,33 +42,9 @@ const settings = {
 <br/>
 
         <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>
-          </div>
-          <div>
-            <h3>8</h3>
-          </div>
-          <div>
-            <h3>9</h3>
-          </div>
+
+{ offers.map( offer => <OfferCard offer={offer}/>) }
+
         </Slider>
 
 <br/>
