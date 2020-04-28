@@ -20,8 +20,8 @@ const handleLogin = (e) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email: form[0].value,
-        password: form[1].value
+        email: form[1].value,
+        password: form[2].value
       })
     })
     .then(res => res.json())
