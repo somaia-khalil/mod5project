@@ -39,7 +39,7 @@ const OfferCard = (props) => {
 
 
 
-    <Link onClick={handleShow}><Card.Img variant="top" src="https://pngimage.net/wp-content/uploads/2018/06/wegmans-logo-png-8.png" /></Link>
+    <Link onClick={handleShow}><Card.Img variant="top" src={props.offer.product.tradeIdentifiers_image} /></Link>
     <Card.Body>
       <Card.Title>{props.offer.id}</Card.Title>
       <Card.Text>
