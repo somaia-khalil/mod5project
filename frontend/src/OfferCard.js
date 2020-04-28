@@ -1,45 +1,24 @@
-import React, {  useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import { Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-import { FormControl } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { Modal } from 'react-bootstrap';
+import OfferModal from './OfferModal'
 
 
 const OfferCard = (props) => {
 
+   const [showOfferModal , setShowOfferModal] = useState(false);
+   const closeOfferModal = () => setShowOfferModal(false);
+   const openOfferModal  = () => setShowOfferModal(true);
 
-  const [show, setShow] = useState(false);
+   return (
+     <Card className="p-5">
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+        <OfferModal showOfferModal={showOfferModal} closeOfferModal={closeOfferModal} offer={props.offer} />
 
-  
-
-    return (
-
-  <Card className="p-5">
-
- <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-
-
-    <Link onClick={handleShow}><Card.Img variant="top" src={props.offer.product.tradeIdentifiers_image} /></Link>
+    <Link onClick={openOfferModal}><Card.Img variant="top" src={props.offer.product.tradeIdentifiers_image} /></Link>
     <Card.Body>
       <Card.Title>{props.offer.id}</Card.Title>
       <Card.Text>
@@ -50,5 +29,6 @@ const OfferCard = (props) => {
 
     )
 }
+
 
 export default OfferCard;

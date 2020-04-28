@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import React, {  useState, useEffect } from 'react';
-import Product from './Product';
+
 import OfferCard from './OfferCard';
 
 
@@ -26,8 +26,9 @@ const StoreCategory = (props) => {
 
 
 const settings = {
-      dots: true,
+      dots: false,
       infinite: true,
+      lazyLoad: true,
       speed: 500,
       slidesToShow: 3,
       slidesToScroll: 3
@@ -35,11 +36,7 @@ const settings = {
 
 
     return (
-      <Container width="50%">
-
-<br/>
-
-<br/>
+      <Container>
 
         <Slider {...settings}>
 
@@ -47,11 +44,6 @@ const settings = {
 
         </Slider>
 
-<br/>
-
-<br/>
-
-<br/>
       </Container>
 
 )
