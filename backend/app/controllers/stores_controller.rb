@@ -24,11 +24,6 @@ class StoresController < ApplicationController
     end
 
     def category_index
-        categories  = Category.all
-        render json: categories
-    end
-
-    def main_categories
         categories  = Category.mainCategories
         render json: categories
     end

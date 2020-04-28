@@ -1,14 +1,16 @@
 import React, {  useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
+import CategoryAccordion from './CategoryAccordion';
 
 
 
 const StoreDetails = (props) => {
+
+
     const [store, setStore] = useState({ categories: [] });
     useEffect(() => {
-        fetch(`http://localhost:3000/stores/${props.match.params.id}/mainCategories`)
+        fetch(`http://localhost:3000/stores/${props.match.params.id}/categories`)
           .then(res => res.json())
           .then(categories => {
             setStore({categories:categories})
@@ -18,10 +20,12 @@ const StoreDetails = (props) => {
 
 
     return(
-        <div>
-         {store.categories.map((category)=> <p><Link to={`/stores/${props.match.params.id}/categories/${category.id}`}>{category.name}</Link></p>)}
-        </div>
-    )
+
+<CategoryAccordion store={props.match.params.id} categories={store.categories} />
+
+)
+
+
 }
 
 

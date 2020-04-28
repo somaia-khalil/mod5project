@@ -1,34 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm';
-import Stores from './Stores'
+import StoreCards from './StoreCards'
 import StoreDetails from './StoreDetails'
 import OfferDetails from './OfferDetails'
-import StoreCategory from './StoreCategory'
-import Header from './Header'
+import HeaderNavbar from './HeaderNavbar';
 import Sidebar from './Sidebar'
-import Page from './Page'
+
+import CategorySlider from './CategorySlider';
+
+
+
+import Header from './HeaderNavbar';
+
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <div>
-            <div class="container">
-                <div class="inner_container">
-                    <div class="inner_container_sub">
-                        <div class="row">
-                           <Sidebar/>
-                           <Page/>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
+      <HeaderNavbar/>
+      {/*  <Sidebar/>*/}
+      <Router>
+         <Switch>
+         { /*<Route  path="/stores/:id/categories/:categoryId" render={(routerProps) => <StoreCategory {...routerProps}/>} ></Route> */}
+         <Route exact path="/stores/:id" render={(routerProps) => <StoreDetails {...routerProps}/>} ></Route>
+         <Route exact path="/offers/:id" render={(routerProps) => <OfferDetails {...routerProps}/>} ></Route>
+         <Route  path="/"><StoreCards/></Route>
+         {/* <LoginForm/> */}
+         {/* <SignupForm/> */}
+         </Switch>
+      </Router>
   </div>
   );
 }

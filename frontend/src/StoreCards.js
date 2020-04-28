@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 
 
 
-const Stores = (props) => {
+import { CardColumns } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import StoreCard from './StoreCard';
+
+
+
+const StoreCards = (props) => {
 
     useEffect(() => {
         fetch("http://localhost:3000/stores")
@@ -16,9 +23,11 @@ const Stores = (props) => {
 
 
     return(
-        <div>
-         {props.stores.map((store)=> <p><Link to={`/stores/${store.id}`}>{store.name}</Link></p>)}
-        </div>
+<Container>
+       <CardColumns>
+          {new Array(20).fill(props.stores.map( store => <StoreCard store={store}/> )).flat() }
+       </CardColumns>
+</Container>
     )
 }
 
@@ -37,4 +46,4 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Stores);
+export default connect(mapStateToProps,mapDispatchToProps)(StoreCards);

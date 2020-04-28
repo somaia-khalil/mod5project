@@ -28,7 +28,7 @@ end
 # get all product 
 
 def seed_products()
-    fetch("/products").each do |product|
+    fetch("/products").first(200).each do |product|
         Product.create!(id:product["sku"], 
         name: product["name"], 
         description:product["descriptions"]["consumer"],
@@ -87,7 +87,7 @@ def seed_products()
 ###################################################################################################
 # get all stores
 def seed_stores()
-   fetch("/stores").each do |store| 
+   fetch("/stores").last(2).each do |store| 
     Store.create!(id: store["number"].to_i,
         name: store["name"],
         chain: store["type"],

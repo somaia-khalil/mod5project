@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   get "/stores/:id/categories" , to: "stores#category_index"
   get "/stores/:id/categories/:category_id" , to: "stores#category_show"
-  get "/stores/:id/mainCategories" , to: "stores#main_categories"
 
 
 
