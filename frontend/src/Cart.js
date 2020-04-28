@@ -7,25 +7,32 @@ import { Row } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 
 
-
-
-
-
 function Cart(props) {
 
-debugger
 
     return (
 <Container>
        <CardColumns>
-          {.map(offer => <OfferCard offer={offer}/> )}
+          { props.cart.map(offer => <OfferCard offer={offer}/> ) }
        </CardColumns>
 </Container> )
 
 
 }
+        
+      
+const mapStateToProps = state => {
+   return {
+      cart: state.cart
+   };
+};
 
-      
-          
-      
-export default Cart;
+const mapDispatchToProps = dispatch => {
+   return {
+      saveToCart: (offer => dispatch({type : 'SAVE_TO_CART' , offer : offer}))
+   };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Cart);
+
+

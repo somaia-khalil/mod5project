@@ -10,7 +10,8 @@ import { Modal } from 'react-bootstrap';
 const OfferModal = (props) => {
 
    const addToCart = () => {
-    props.closeOfferModal()
+      props.saveToCart(props.offer)
+      props.closeOfferModal()
     }
 
    return (
@@ -19,7 +20,7 @@ const OfferModal = (props) => {
           <Modal.Title>{props.offer.product.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <p>Some details of this niice product...</p>
+        <p>Some details of this nice product...</p>
         <p>Buy now for only ${props.offer.price}!</p>
         </Modal.Body>
         <Modal.Footer>
@@ -35,4 +36,21 @@ const OfferModal = (props) => {
 }
 
 
-export default OfferModal;
+
+
+
+const mapStateToProps = state => {
+   return {
+      cart: state.cart
+   };
+};
+
+const mapDispatchToProps = dispatch => {
+   return {
+      saveToCart: (offer => dispatch({type: 'SAVE_TO_CART' , offer : offer}))
+   };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(OfferModal);
+
+

@@ -31,4 +31,16 @@ const OfferCard = (props) => {
 }
 
 
-export default OfferCard;
+const mapStateToProps = state => {
+   return {
+      cart: state.cart
+   };
+};
+
+const mapDispatchToProps = dispatch => {
+   return {
+      saveToCart: (offer => dispatch({type: 'SAVE_TO_CART' , offer : offer}))
+   };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(OfferCard);

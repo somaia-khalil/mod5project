@@ -1,4 +1,13 @@
-export default function reducer(
+export default function reducer(state , action) {
+  if (!state && localStorage.getItem('state'))
+     state = JSON.parse(localStorage.getItem('state'))
+  state = customReducer(state,action)
+  localStorage.setItem('state',JSON.stringify(state))
+  console.log(action)
+  return state
+}
+
+function customReducer(
     state = {
       stores: [],
       cart: [],
@@ -16,7 +25,7 @@ export default function reducer(
           stores: action.stores
         }
 
-      case 'SAVE_TO_CART':
+      case 'SAVE_TO_CART': console.log(action)
         return {
           ...state,
           cart: [...state.cart , action.offer]

@@ -12,6 +12,7 @@ import StoreDetails from './StoreDetails';
 
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
+import Cart from './Cart';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
          { /*<Route  path="/stores/:id/categories/:categoryId" render={(routerProps) => <StoreCategory {...routerProps}/>} ></Route>  */}
                <Route exact path="/stores/:id" render={routerProps => <StoreDetails {...routerProps}/>} ></Route>
          { /*<Route exact path="/offers/:id" render={(routerProps) => <OfferDetails {...routerProps}/>} ></Route> */ }
-         { /*<Route exact path="/cart"><Cart/></Route> */ }
+               <Route exact path="/cart"><Cart/></Route>
                <Route exact path="/"><StoreCards/></Route>
             </Switch>
          </Router>
