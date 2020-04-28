@@ -1,7 +1,11 @@
 import React from 'react';
-function Cart() {
+import { connect } from 'react-redux';
+function Cart(props) {
+
+
     return (
         // {/* <!-- Cart Component Overlay (Display on hover) --> */}
+    
         <div className="header_user_info">
         <a className="cart" href="link">Cart (%count)</a>
         
@@ -11,21 +15,22 @@ function Cart() {
 <div>
 <dl>
 
-
+{props.cart.map(offer => {return (
 <dt>
-<a href="link" className="cart-images"><img src="http://prestashop.templatemela.com/PRS05/PRS050107/img/p/9/0/90-cart_default.jpg"/></a>
+<a href="link" className="cart-images"><img src={offer.product.tradeIdentifiers_image}/></a>
 <div className="cart-info">
 <div className="product-name">
 <span className="quantity"> 2 x </span>
-<span > Product 1 </span>
+<span > {offer.product.name} </span>
 </div>
 <div className="product-atributes">
 <span>Black, S</span>
 </div>
-<span className="price"> $152.46 </span>
+<span className="price"> $ {offer.price} </span>
 </div> 
 <span className="remove_link"> <a className="cart_block_remove_link" href="remove_link">Remove</a></span>
 </dt>
+)})}
 
 
 
@@ -65,4 +70,14 @@ function Cart() {
 
 
      )}
-    export default Cart
+     const mapStateToProps = state => {
+        return {
+          cart: state.cart
+        };
+      };
+       
+      
+      
+      
+      
+      export default connect(mapStateToProps)(Cart);

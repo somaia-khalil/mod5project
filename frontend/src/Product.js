@@ -17,14 +17,28 @@ const Product = (props) => {
       },[props.offer])
     
     return(
-        <Link to={`/offers/${props.offer.id}`} >
-        <div>
-            <h1>{product.name}</h1>
-            <img src={product.tradeIdentifiers_image}></img>
-            <h2>{props.offer.price}</h2>
-            <h2>{props.offer.amount}</h2>
-        </div>
-        </Link>
+
+<li className="col-xs-12 col-sm-6 col-md-4">
+<div className="product-container">
+<div>
+<div className="product-image-container">
+<a href={`/offers/${props.offer.id}`}><img src={product.tradeIdentifiers_image} width="220" height="200"/> </a>
+</div>
+</div>
+<div className="right-block">
+<h5> <a className="product-name" href={`/offers/${props.offer.id}`}> {product.name} </a></h5>
+</div>
+<div className="functional-buttons clearfix">
+<div className="wishlist"> <a> Add to Wishlist </a></div>
+</div>
+<div className="content_price"> <span itemprop="price" className="price product-price"> {props.offer.price} </span></div>
+</div>
+</li>
+
+
+
+
+
     )
 }
 

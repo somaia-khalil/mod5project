@@ -1,6 +1,7 @@
 export default function storeReducer(
     state = {
-      stores: []
+      stores: [],
+      cart: []
     },
     action
   ) {
@@ -10,6 +11,11 @@ export default function storeReducer(
         return {
           ...state,
           stores: action.stores
+        }
+      case 'saveToCart':
+        return{
+          ...state,
+          cart: [...state.cart,action.offer]
         }
    
       default:

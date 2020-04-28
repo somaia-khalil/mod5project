@@ -22,10 +22,26 @@ const OfferDetails = (props) => {
           <h1>{offer.product.name}</h1>
         <img src={offer.product.tradeIdentifiers_image}></img>
         <h2>{offer.price}</h2>
-        <h2>{offer.amount}</h2>      
+        <h2>{offer.amount}</h2>
+        <Link onClick={()=>props.saveToCart(offer)}   to= "#">Add to cart</Link>    
        </div>
-    )
+    ) 
 }
 
 
-export default OfferDetails;
+const mapStateToProps = state => {
+  return {
+    cart: state.cart
+  };
+};
+ 
+const mapDispatchToProps = dispatch => {
+  return {
+      saveToCart: (offer) => dispatch({type:'saveToCart', offer:offer })
+   
+  };
+};
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(OfferDetails);

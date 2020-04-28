@@ -9,7 +9,7 @@ function Header() {
     <div className="container">
         <div className="row">
             <div id="header_logo">
-                <a href="/"> <img className="logo img-responsive" src="img/logo1.png" width="239" height="64"/> </a>
+                <a href="/"> <img className="logo img-responsive" src="/img/logo1.png" width="239" height="64"/> </a>
             </div>
              <Navbar/>
              <NavbarL/>

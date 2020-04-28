@@ -24,17 +24,6 @@ function App() {
                         <div class="row">
                            <Sidebar/>
                            <Page/>
-        <Router>
-        <Switch>
-        <Route  path="/stores/:id/categories/:categoryId" render={(routerProps) => <StoreCategory {...routerProps}/>} ></Route>
-        <Route exact path="/stores/:id" render={(routerProps) => <StoreDetails {...routerProps}/>} ></Route>
-        <Route exact path="/offers/:id" render={(routerProps) => <OfferDetails {...routerProps}/>} ></Route>
-        <Route  path="/stores"><Stores/></Route>
-        {/* <LoginForm/> */}
-        {/* <SignupForm/> */}
-      </Switch>
-    </Router>
-
                           </div>
                         </div>
                     </div>
