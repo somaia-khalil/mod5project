@@ -20,7 +20,7 @@ const OfferCard = (props) => {
 
     <Link onClick={openOfferModal}><Card.Img variant="top" src={props.offer.product.tradeIdentifiers_image} /></Link>
     <Card.Body>
-      <Card.Title>{props.offer.id}</Card.Title>
+      <Card.Title>{props.offer.product.name}</Card.Title>
       <Card.Text>
         This is a nice product
       </Card.Text>

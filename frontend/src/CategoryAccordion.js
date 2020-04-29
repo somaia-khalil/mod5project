@@ -23,16 +23,16 @@ const CategoryAccordion = (props) => {
 
 <Accordion>
  {props.categories.map(category => 
-  <Card>
+  <Card key ={category.id}>
     <Card.Header>
       <Accordion.Toggle as={Button} variant="link" eventKey={category.id}>
         {category.name}
       </Accordion.Toggle>
     </Card.Header>
     <Accordion.Collapse eventKey={category.id}>
-      <Card.Body>
+      <Card.Body >
 
-         { category.categories && category.categories.length > 0 ? <CategoryAccordion store={props.store} categories={category.categories} /> : <CategorySlider store={props.store} category={category}/>}
+         { category.categories && category.categories.length > 0 ? <CategoryAccordion store={props.store} categories={category.categories}  /> : <CategorySlider store={props.store} category={category}/>}
 
      </Card.Body>
     </Accordion.Collapse>
