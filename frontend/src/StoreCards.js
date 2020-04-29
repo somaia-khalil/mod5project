@@ -25,7 +25,7 @@ const StoreCards = (props) => {
     return(
 <Container>
        <CardColumns>
-          {new Array(20).fill(props.stores.map( store => <StoreCard store={store}/> )).flat() }
+          { props.stores.filter(store => props.zipcode && store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
        </CardColumns>
 </Container>
     )
@@ -33,6 +33,7 @@ const StoreCards = (props) => {
 
 const mapStateToProps = state => {
     return {
+      zipcode: state.zipcode,
       stores: state.stores
     };
   };

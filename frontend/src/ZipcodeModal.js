@@ -26,8 +26,8 @@ const ZipcodeModal = (props) => {
         </Modal.Header>
         <Modal.Body>
        <Form.Group controlId="formBasicZipcode">
-         <Form.Label>Zipcode</Form.Label>
-       <Form.Control type="zipcode" placeholder="Enter zipcode" />
+         <Form.Label>Zipcode 07054 or 14207 </Form.Label>
+       <Form.Control type="zipcode" placeholder="Enter zipcode"/>
        </Form.Group>
       </Modal.Body>
         <Modal.Footer>

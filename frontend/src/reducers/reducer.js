@@ -12,7 +12,7 @@ function customReducer(
       stores: [],
       cart: [],
       user: null,
-      zipcode: null,
+      zipcode: "",
       showLoginModal: false,
       showRegisterModal: false,
       showZipcodeModal: false
@@ -41,8 +41,7 @@ function customReducer(
 
       case 'REGISTER':  //TODO
         return {
-          ...state,
-          user: action.user
+          ...state
         }
 
       case 'LOGIN': //TODO

@@ -12,39 +12,46 @@ class ApplicationController < ActionController::API
     end
   
     def current_user
-      # byebug
       if decoded_token
-      # byebug
         user_id = decoded_token["user_id"]
-
-        User.find(user_id)
+        p "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm #{user_id}"
+        @user = User.find(user_id)
       end
     end
   
     def decoded_token
-       # token => "eyJhbGciOiJIUzI1NiJ9.eyJiZWVmIjoic3RlYWsifQ._IBTHTLGX35ZJWTCcY30tLmwU9arwdpNVxtVU0NpAuI"
-      if auth_header
-        token = auth_header.split(' ')[1]
-          puts token
-          # byebug
+       # token => "eyJhbGciOiJIUzI1NiJ9.eyJiZWVmIjoic3RlYWsifQ._IBTHTLGX35ZJWTCcY30tLmwU9arwdpNVxtVU0NpAuI" 
+      if !auth_header
+          return nil
+       end
+
         begin
-          # byebug
+         token = auth_header.split(' ')[1]
          JWT.decode(token,"flatiron")[0] #pass the same key
           # JWT.decode => [{ "user_id"=>"18" }, { "alg"=>"HS256" }]
           # [0] gives us the payload { "user_id"=>"18" }
         rescue JWT::DecodeError
           nil
         end
-      end
     end
   
+
+
+
     def check_authentication
       render json: { error: 'Please log in' }, status: 401 if !logged_in?
     end
+
+
+
   
     def logged_in?
       # byebug
       !!current_user
     end
+
+
+
+
 
 end

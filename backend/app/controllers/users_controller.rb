@@ -13,6 +13,8 @@ class UsersController < ApplicationController
    @user = User.new(user_params)
     if @user.valid?
       @user.save
+      Customer.create!(user: @user)
+      Shopper.create!(user: @user)    #TODO all users both roles ??
       render json: @user, status: :created
     else
       render json: {error: "Failed to create a user"}, status: :not_acceptable

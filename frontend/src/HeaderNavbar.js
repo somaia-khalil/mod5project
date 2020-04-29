@@ -1,6 +1,7 @@
 import React, {  useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from "react-router-dom";
 import { Navbar } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
@@ -22,13 +23,15 @@ const HeaderNavbar = (props) => {
       <Nav.Link href="#features">Features</Nav.Link>
       <Nav.Link href="#pricing">Pricing</Nav.Link>
     </Nav>
+    <Link to="/cart"> <Button variant="primary">Cart</Button></Link>
+    <Button variant="primary" onClick={props.openZipcodeModal}>Change Area</Button>
     <Form inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
       <Button variant="outline-info">Search</Button>
     </Form>
 
     { props.user ?  
-       <div><Button variant="primary" onClick={props.logout}>Logout</Button><Button variant="primary">User Area</Button></div>
+       <div><Button variant="primary" onClick={props.logout}>Logout</Button><Link to ="/deliveries"> <Button variant="primary">Deliveries</Button></Link></div>
     : <div><Button variant="primary" onClick={props.openLoginModal}>Login</Button> <Button variant="primary" onClick={props.openRegisterModal}>Register</Button> </div> }
 
 
@@ -49,7 +52,9 @@ const mapDispatchToProps = dispatch => {
       openLoginModal: (() => dispatch({type: 'OPEN_LOGIN_MODAL'})),
       closeLoginModal: (() => dispatch({type: 'CLOSE_LOGIN_MODAL'})),
       openRegisterModal: (() => dispatch({type: 'OPEN_REGISTER_MODAL'})),
-      closeRegisterModal: (() => dispatch({type: 'CLOSE_REGISTER_MODAL'}))
+      closeRegisterModal: (() => dispatch({type: 'CLOSE_REGISTER_MODAL'})),
+      openZipcodeModal: (() => dispatch({type: 'OPEN_ZIPCODE_MODAL'})),
+      closeZipcodeModal: (() => dispatch({type: 'CLOSE_ZIPCODE_MODAL'})),
    };
 };
 
