@@ -27,7 +27,7 @@ function Deliveries(props) {
       .then(res => res.json())
       .then(deliveries => {
         setDeliveries(deliveries)
-        console.log(deliveries)
+        //console.log(deliveries)
       })
      },[props.user])
 

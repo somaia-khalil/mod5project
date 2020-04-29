@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { CardColumns } from 'react-bootstrap';
@@ -7,47 +7,54 @@ import { Row } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 
 
+import CheckoutModal from './CheckoutModal';
+
+
 import { Link } from "react-router-dom";
+
+
+import { Navbar } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+
 
 
 function Cart(props) {
 
-const sendOrder = () => {
+   const [showCheckoutModal , setShowCheckoutModal] = useState(false);
+   const closeCheckoutModal = () => setShowCheckoutModal(false);
+   const openCheckoutModal  = () => setShowCheckoutModal(true);
 
-    //TODO require login!
 
-      if (!props.user) {
-         props.openLoginModal()
-          // TODO display some fancy error message to require login
-         return
-      }
 
-    fetch("http://localhost:3000/deliveries",{
-      method: "POST",
-      headers:{
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${props.user.token}`
-      },
-      body: JSON.stringify({ orders: props.cart.map(offer => {return {id : offer.id , amount : offer.amount}})})
-    })
-    .then(res => res.json())
-    .then(userInfo => {
-       // TODO redirect to checkout page
-       console.log(userInfo)
-    })
+const checkoutCart = () => {
+      if (!props.user) 
+         props.openLoginModal();
+      else
+         openCheckoutModal();
   }
 
     return (
-<Container> 
-          <Button variant="secondary" onClick={sendOrder}>
-            Checkout
-          </Button>
 
+<div>
+
+<Navbar bg="primary" variant="dark">
+<Navbar.Brand>Cart</Navbar.Brand>
+<Nav className="mr-auto"></Nav>
+<Button onClick={checkoutCart} variant="outline-light">Checkout Cart</Button>
+</Navbar>
+
+<CheckoutModal showCheckoutModal={showCheckoutModal} closeCheckoutModal={closeCheckoutModal}/>
+
+    <Container>
        <CardColumns>
           { props.cart.map(offer => <OfferCard offer={offer}/> ) }
        </CardColumns>
-</Container> )
+    </Container> 
+</div>
+)
 
 
 }

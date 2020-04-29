@@ -19,7 +19,7 @@ const ZipcodeModal = (props) => {
     }
 
    return (
-  <Modal show={props.showZipcodeModal || !props.zipcode} onHide={props.closeZipcodeModal}>
+  <Modal show={props.showZipcodeModal} onHide={props.closeZipcodeModal}>
       <Form onSubmit={setZipcode}>
         <Modal.Header closeButton>
           <Modal.Title>Locate Stores</Modal.Title>
@@ -31,8 +31,8 @@ const ZipcodeModal = (props) => {
        </Form.Group>
       </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.closeZipcodeModal}>
-            Close
+          <Button variant="secondary" onClick={() => {props.closeZipcodeModal() ; props.saveZipcode(null)}}>
+            All Stores
           </Button>
           <Button type="submit" variant="primary">
             Find

@@ -19,16 +19,10 @@ const HeaderNavbar = (props) => {
       <img alt="" src="/img/logo1.png" height="30" className="d-inline-block align-top"/>
     </Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link href="#home">Home</Nav.Link>
-      <Nav.Link href="#features">Features</Nav.Link>
-      <Nav.Link href="#pricing">Pricing</Nav.Link>
+      <Nav.Link href="/">Stores</Nav.Link>
+      <Nav.Link onClick={props.openZipcodeModal}>Change Area</Nav.Link>
+      <Nav.Link href="/cart">Cart</Nav.Link>
     </Nav>
-    <Link to="/cart"> <Button variant="primary">Cart</Button></Link>
-    <Button variant="primary" onClick={props.openZipcodeModal}>Change Area</Button>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button>
-    </Form>
 
     { props.user ?  
        <div><Button variant="primary" onClick={props.logout}>Logout</Button><Link to ="/deliveries"> <Button variant="primary">Deliveries</Button></Link></div>

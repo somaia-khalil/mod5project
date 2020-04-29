@@ -1,8 +1,8 @@
 import React, {  useEffect } from 'react';
 import { connect } from 'react-redux';
+
+
 import { Link } from "react-router-dom";
-
-
 
 import { CardColumns } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
@@ -22,10 +22,12 @@ const StoreCards = (props) => {
       },[])
 
 
+
+
     return(
 <Container>
        <CardColumns>
-          { props.stores.filter(store => props.zipcode && store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
+          { props.stores.filter(store => !props.zipcode || store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
        </CardColumns>
 </Container>
     )

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/login', to: 'auth_user#create'
   get '/hello' , to: 'users#hello'
 
-  get "/stores/search/:q" , to: "stores#search"
+  get "/stores/:id/search/:q" , to: "stores#search"
 
   get "/stores/:id/categories" , to: "stores#category_index"
   get "/stores/:id/categories/:category_id" , to: "stores#category_show"

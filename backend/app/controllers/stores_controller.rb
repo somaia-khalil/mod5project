@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
     skip_before_action :check_authentication, only: [:index, :show, :search, :category_index, :category_show,:main_categories]
-    before_action :find_store, only: [:show, :category_show]
+    before_action :find_store, only: [:show, :category_show, :search]
     
 
     def index
@@ -12,9 +12,14 @@ class StoresController < ApplicationController
         render json: @store
     end
 
+#    def search
+#        stores = Store.findByZipcode(params[:q])
+#        render json:stores
+#    end
+
     def search
-        stores = Store.findByZipcode(params[:q])
-        render json:stores
+        offers = @store.offers.joins(:product).where(products: {name: params[:q]})
+        render json: offers
     end
 
     def category_show

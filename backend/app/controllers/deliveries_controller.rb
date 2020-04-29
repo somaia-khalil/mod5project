@@ -1,8 +1,6 @@
 class DeliveriesController < ApplicationController
-    before_action :find_deliveries, only: [:index]
 
-# remove
-#skip_before_action :check_authentication, only: [:index]
+    before_action :find_deliveries, only: [:index]
 
     def index
         render json: @deliveries
