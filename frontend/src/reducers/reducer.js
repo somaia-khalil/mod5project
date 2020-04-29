@@ -39,11 +39,6 @@ function customReducer(
           zipcode: action.zipcode
         }
 
-      case 'REGISTER':  //TODO
-        return {
-          ...state
-        }
-
       case 'LOGIN': //TODO
         return {
           ...state,

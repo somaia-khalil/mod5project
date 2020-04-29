@@ -31,7 +31,6 @@ const handleRegister = (e) => {
     .then(res => res.json())
     .then(userInfo => {
         console.log(userInfo)
-       props.register(userInfo)
        props.closeRegisterModal()
       // localStorage.setItem("token", userInfo.token)
     })
@@ -78,7 +77,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      register: (user => dispatch({type: 'REGISTER' , user: user})),
       openRegisterModal: (() => dispatch({type: 'OPEN_REGISTER_MODAL'})),
       closeRegisterModal: (() => dispatch({type: 'CLOSE_REGISTER_MODAL'}))
    };
