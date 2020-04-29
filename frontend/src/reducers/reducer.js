@@ -12,8 +12,10 @@ function customReducer(
       stores: [],
       cart: [],
       user: null,
+      zipcode: null,
       showLoginModal: false,
       showRegisterModal: false,
+      showZipcodeModal: false
     },
     action
   ) {
@@ -25,22 +27,28 @@ function customReducer(
           stores: action.stores
         }
 
-      case 'SAVE_TO_CART': console.log(action)
+      case 'SAVE_TO_CART':
         return {
           ...state,
           cart: [...state.cart , action.offer]
         }
 
+      case 'SAVE_ZIPCODE':
+        return {
+          ...state,
+          zipcode: action.zipcode
+        }
+
       case 'REGISTER':  //TODO
         return {
           ...state,
-          user: {email: "sd"}
+          user: action.user
         }
 
       case 'LOGIN': //TODO
         return {
           ...state,
-          user: {email: "sd"}
+          user: action.user
         }
 
       case 'LOGOUT':
@@ -69,6 +77,18 @@ function customReducer(
         return {
           ...state,
           showRegisterModal: false
+        }
+
+
+      case 'OPEN_ZIPCODE_MODAL':
+        return {
+          ...state,
+          showZipcodeModal: true
+        }
+      case 'CLOSE_ZIPCODE_MODAL':
+        return {
+          ...state,
+          showZipcodeModal: false
         }
    
       default:

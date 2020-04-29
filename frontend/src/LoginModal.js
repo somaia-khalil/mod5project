@@ -29,7 +29,7 @@ const LoginModal = (props) => {
     .then(res => res.json())
     .then(userInfo => {
         console.log(userInfo)
-       localStorage.userInfo = userInfo
+       props.login(userInfo)
        props.closeLoginModal()
     })
   }
@@ -75,7 +75,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      login: ((email , password) => dispatch({type: 'LOGIN' , credentials: {email  : email , password : password}})),
+      login: (user => dispatch({type: 'LOGIN' , user: user})),
       openLoginModal: (() => dispatch({type: 'OPEN_LOGIN_MODAL'})),
       closeLoginModal: (() => dispatch({type: 'CLOSE_LOGIN_MODAL'}))
    };
