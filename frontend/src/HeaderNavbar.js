@@ -25,8 +25,8 @@ const HeaderNavbar = (props) => {
     </Nav>
 
     { props.user ?  
-       <div><Button variant="primary" onClick={props.logout}>Logout</Button><Link to ="/deliveries"> <Button variant="primary">Deliveries</Button></Link></div>
-    : <div><Button variant="primary" onClick={props.openLoginModal}>Login</Button> <Button variant="primary" onClick={props.openRegisterModal}>Register</Button> </div> }
+       <div><Button variant="secondary" onClick={props.logout}>Logout</Button><Link to ="/deliveries"> <Button variant="secondary" >Deliveries</Button></Link></div>
+    : <div><Button variant="secondary" onClick={props.openLoginModal}>Login</Button> <Button variant="secondary" onClick={props.openRegisterModal}>Register</Button> </div> }
 
 
   </Navbar>

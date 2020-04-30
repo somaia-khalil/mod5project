@@ -35,7 +35,10 @@ function App() {
 
                <Route exact path="/deliveries"><Deliveries/></Route>
                <Route exact path="/cart"><Cart/></Route>
-               <Route exact path="/"><StoreCards/></Route>
+               <Route exact path="/">
+            
+                  <StoreCards/>
+                  </Route>
             </Switch>
          </Router>
       </div>

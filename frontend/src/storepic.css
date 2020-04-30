@@ -1,0 +1,80 @@
+.over {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(247, 247, 247);
+    background-size: cover;
+    overflow: hidden;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-image: url("https://shop.redq.now.sh/_next/static/images/grocery-f1565ac25de02b9295dccc2da13004ab.png");
+}
+
+
+.banner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.header {
+    font-family: Poppins, sans-serif;
+    font-size: 45px;
+    font-weight: 700;
+    color: rgb(13, 17, 54);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.span{
+    font-family: Lato, sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgb(119, 121, 140);
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.outer{
+    width: 700px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 21px 36px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.inner {
+    width: 100%;
+    opacity: 1;
+    height: 100%;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    font-size: 15px;
+    color: rgb(119, 121, 140);
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: width 500ms ease-in-out 0s, opacity 500ms ease-in-out 0s;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 6px 0px 0px 6px;
+}
+
+.location{
+    font-family: Lato, sans-serif;
+    font-size: 13px;
+    color: rgb(0, 158, 127);
+    line-height: 38px;
+    font-weight: 700;
+    background-color: rgb(247, 247, 247);
+    margin-left: 5px;
+    white-space: nowrap;
+    padding: 0px 15px;
+    border-radius: 6px;
+}

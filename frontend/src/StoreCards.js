@@ -1,5 +1,6 @@
 import React, {  useEffect } from 'react';
 import { connect } from 'react-redux';
+import './storepic.css'
 
 
 import { Link } from "react-router-dom";
@@ -25,11 +26,24 @@ const StoreCards = (props) => {
 
 
     return(
+      <div>
+       <div className="over">
+        <div class="banner">
+          <h1 className="header">Groceries Delivered in 90 Minute </h1>
+          <span className="span">Get your healthy foods & snacks delivered at your doorsteps all day everyday</span>
+          <div className="outer">
+            <div className="inner">
+              <span className="location">Location</span>
+            </div>
+          </div>
+        </div>
+      </div>
 <Container>
        <CardColumns>
           { props.stores.filter(store => !props.zipcode || store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
        </CardColumns>
 </Container>
+</div>
     )
 }
 

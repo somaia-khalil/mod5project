@@ -30,13 +30,13 @@ const settings = {
       infinite: true,
       lazyLoad: true,
       speed: 500,
-      slidesToShow: 3,
+      slidesToShow:3,
       slidesToScroll: 3
     };
 
 
     return (
-      <Container>
+
 
         <Slider {...settings}>
 
@@ -44,7 +44,6 @@ const settings = {
 
         </Slider>
 
-      </Container>
 
 )
 
