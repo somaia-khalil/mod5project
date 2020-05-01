@@ -10,7 +10,7 @@ import Slider from "react-slick";
 import { Container } from 'react-bootstrap';
 
 
-const StoreCategory = (props) => {
+const CategorySlider = (props) => {
 
  
    const [offers, setOffers] = useState([]);
@@ -40,7 +40,7 @@ const settings = {
 
         <Slider {...settings}>
 
-{ offers.map( offer => <OfferCard offer={offer}/>) }
+{ offers.map( offer => <OfferCard key={offer.id} offer={offer}/>) }
 
         </Slider>
 
@@ -54,4 +54,4 @@ const settings = {
 
 
 
-export default StoreCategory;
+export default CategorySlider;

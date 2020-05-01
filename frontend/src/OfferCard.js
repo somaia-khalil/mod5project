@@ -18,7 +18,7 @@ const OfferCard = (props) => {
 
         <OfferModal showOfferModal={showOfferModal} closeOfferModal={closeOfferModal} offer={props.offer} />
 
-    <Link onClick={openOfferModal}><Card.Img variant="top" src={props.offer.product.tradeIdentifiers_image} /></Link>
+    <Card.Img onClick={openOfferModal} variant="top" src={props.offer.product.tradeIdentifiers_image} />
     <Card.Body>
       <Card.Title>{props.offer.product.name}</Card.Title>
       <Card.Text>

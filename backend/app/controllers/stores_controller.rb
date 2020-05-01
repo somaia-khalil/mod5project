@@ -1,6 +1,6 @@
 class StoresController < ApplicationController
-    skip_before_action :check_authentication, only: [:index, :show, :search, :category_index, :category_show,:main_categories]
-    before_action :find_store, only: [:show, :category_show, :search]
+    skip_before_action :check_authentication, only: [:index, :show, :search, :category_index, :category_show, :offer_index,:main_categories]
+    before_action :find_store, only: [:show, :category_show, :offer_index, :search]
     
 
     def index
@@ -28,9 +28,23 @@ class StoresController < ApplicationController
         render json: offers
     end
 
+
+
     def category_index
         categories  = Category.mainCategories
         render json: categories
+    end
+
+    def category_show
+        category = Category.find_by(id: params[:category_id])
+        #offers = @store.getOffersByCategory(category)
+        render json: category
+    end
+
+    def offer_index
+        category = Category.find_by(id: params[:category_id])
+        offers = @store.getOffersByCategory(category)
+        render json: offers
     end
 
     private

@@ -22,6 +22,7 @@ function App() {
    return (
       <div className="App">
          <Router>
+
          <HeaderNavbar/>
 
          <LoginModal/>
@@ -30,15 +31,12 @@ function App() {
 
             <Switch>
          { /*<Route  path="/stores/:id/categories/:categoryId" render={(routerProps) => <StoreCategory {...routerProps}/>} ></Route>  */}
-               <Route exact path="/stores/:id" render={routerProps => <StoreDetails {...routerProps}/>} ></Route>
+               <Route path="/stores/:store_id" render={routerProps => <StoreDetails {...routerProps}/>} ></Route>
          { /*<Route exact path="/offers/:id" render={(routerProps) => <OfferDetails {...routerProps}/>} ></Route> */ }
 
                <Route exact path="/deliveries"><Deliveries/></Route>
                <Route exact path="/cart"><Cart/></Route>
-               <Route exact path="/">
-            
-                  <StoreCards/>
-                  </Route>
+               <Route exact path="/"><StoreCards/></Route>
             </Switch>
          </Router>
       </div>

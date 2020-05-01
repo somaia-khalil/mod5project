@@ -1,6 +1,9 @@
 import React, {  useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import CategoryAccordion from './CategoryAccordion';
 
 
@@ -17,12 +20,22 @@ import { Container } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 
 
+import { CardColumns } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import CategoryCard from './CategoryCard';
+
+import CategoryDetails from './CategoryDetails';
+import OfferCards from './OfferCards';
+
+
+
+
 const StoreDetails = (props) => {
 
 
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:3000/stores/${props.match.params.id}/categories`)
+        fetch(`http://localhost:3000/stores/${props.match.params.store_id}/categories`)
           .then(res => res.json())
           .then(categories => {
             setCategories(categories)
@@ -31,7 +44,7 @@ const StoreDetails = (props) => {
 
     const [store, setStore] = useState({name: ""});
     useEffect(() => {
-        fetch(`http://localhost:3000/stores/${props.match.params.id}`)
+        fetch(`http://localhost:3000/stores/${props.match.params.store_id}`)
           .then(res => res.json())
           .then(store => {
             setStore(store)
@@ -44,7 +57,7 @@ const StoreDetails = (props) => {
     const searchOffers = (e) => {
         e.preventDefault()
         let form = e.target
-        fetch(`http://localhost:3000/stores/${props.match.params.id}/search/${form[0].value}`)
+        fetch(`http://localhost:3000/stores/${props.match.params.store_id}/search/${form[0].value}`)
           .then(res => res.json())
           .then(offers => {
             setOffers(offers)
@@ -78,17 +91,24 @@ const settings = {
     </Form>
   </Navbar>
 
-    { offers.length > 0 &&
-      <Container>
-        <Slider {...settings}>
-      { offers.map( offer => <OfferCard offer={offer}/>) }
-        </Slider>
-      </Container>  }
+    { offers.length > 0 && <OfferCards offers={offers}/> }
 
+
+
+ {/* <CategoryAccordion store={props.match.params.id} categories={categories} /> */}
 
 <Container>
-<CategoryAccordion store={props.match.params.id} categories={categories} />
+            <Switch>
+               <Route exact path="/stores/:store_id/categories/:category_id" render={routerProps => <CategoryDetails {...routerProps}/>} ></Route>
+               <Route exact path="/stores/:store_id/" render={routerProps => <div>
+
+       <CardColumns> { categories.map( category => <CategoryCard store_id={props.match.params.store_id} category={category}/> ) } </CardColumns>
+</div>
+               }/>
+            </Switch>
+
 </Container>
+
 
 </div>
 

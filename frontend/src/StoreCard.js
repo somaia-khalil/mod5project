@@ -8,7 +8,7 @@ const StoreCard = (props) => {
 
     return(
 
-  <Card className="p-5">
+  <Card className="p-5" key={props.store.id} >
     <Link to={`/stores/${props.store.id}`}><Card.Img variant="top" src="https://pngimage.net/wp-content/uploads/2018/06/wegmans-logo-png-8.png" /></Link>
     <Card.Body>
       <Card.Title>{props.store.name}</Card.Title>
