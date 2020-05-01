@@ -5,6 +5,8 @@ import { CardColumns } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import OfferCard from './OfferCard';
+import OfferCards from './OfferCards';
+
 
 
 import CheckoutModal from './CheckoutModal';
@@ -48,11 +50,8 @@ const checkoutCart = () => {
 
 <CheckoutModal showCheckoutModal={showCheckoutModal} closeCheckoutModal={closeCheckoutModal}/>
 
-    <Container>
-       <CardColumns>
-          { props.cart.map(offer => <OfferCard offer={offer}/> ) }
-       </CardColumns>
-    </Container> 
+    <OfferCards offers={props.cart}/>
+     
 </div>
 )
 

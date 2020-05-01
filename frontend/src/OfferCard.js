@@ -1,37 +1,50 @@
 import React, {useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-
-import { Card } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-
 import OfferModal from './OfferModal'
-
+import "./vegy.css"
+import Counter from "./Counter";
 
 const OfferCard = (props) => {
 
    const [showOfferModal , setShowOfferModal] = useState(false);
    const closeOfferModal = () => setShowOfferModal(false);
    const openOfferModal  = () => setShowOfferModal(true);
+   const [amount , setAmount] = useState(0)
+   const [isAdded , setAdded] = useState(false)
+   useEffect(() => setAdded(!!props.cart.find(offer => offer.id == props.offer.id)), [props.cart])
+   
 
-   return (
-     <Card className="p-5">
+    return (
+      <div className="product">
+         <OfferModal showOfferModal={showOfferModal} closeOfferModal={closeOfferModal} offer={props.offer} />
+        <div className="product-image">
+          <img
+            src={props.offer.product.tradeIdentifiers_image}
+            alt={props.offer.product.name}
+            onClick={openOfferModal}
+          />
+        </div>
+        <h4 className="product-name">{props.offer.product.name}</h4>
+        <p className="product-price">${props.offer.price}</p>
+        <Counter
+          productQuantity ={amount}
+          updateQuantity={setAmount}
+         //  resetQuantity={0}
+        />
+        <div className="product-action">
+          <button
+            className={!isAdded ? "" : "added"}
+            type="button"
+            onClick={()=>props.saveToCart(props.offer)}          >
+            {!isAdded ? "ADD TO CART" : "✔ ADDED"}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
-        <OfferModal showOfferModal={showOfferModal} closeOfferModal={closeOfferModal} offer={props.offer} />
 
-    <Card.Img onClick={openOfferModal} variant="top" src={props.offer.product.tradeIdentifiers_image} />
-    <Card.Body>
-      <Card.Title>{props.offer.product.name}</Card.Title>
-      <Card.Text>
-        This is a nice product
-      </Card.Text>
-    </Card.Body>
-  </Card>
-
-    )
-}
-
-
-const mapStateToProps = state => {
+  const mapStateToProps = state => {
    return {
       cart: state.cart
    };
@@ -40,9 +53,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
    return {
       saveToCart: (offer => dispatch({type: 'SAVE_TO_CART' , offer : offer}))
+
    };
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(OfferCard);
+
+
+
+
+
+
 
 
