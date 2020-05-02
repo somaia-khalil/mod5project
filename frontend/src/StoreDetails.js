@@ -95,12 +95,16 @@ const settings = {
   const [offer, setOffer] = useState(null);
 
   const onDetected = barcode => {
+     console.log(barcode)
      fetch(`http://localhost:3000/stores/${props.match.params.store_id}/offers/search/${barcode}`)
           .then(res => res.json())
           .then(offer => {
+            console.log(offer)
             setOffer(offer)
             if (offer)
-               openOfferModal()
+               openOfferModal();
+            else
+               alert("Not found!");
           })
   };
 
