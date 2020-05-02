@@ -10,6 +10,7 @@
     "cart-localstorage": "^1.1.5",
     "lazy-load": "0.0.2",
     "materialize-css": "^1.0.0",
+    "quagga": "^0.12.1",
     "react": "^16.13.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-bootstrap": "^1.0.1",
@@ -27,7 +28,7 @@
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

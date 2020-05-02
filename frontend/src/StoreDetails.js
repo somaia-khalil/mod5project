@@ -20,6 +20,9 @@ import { Container } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 
 
+import ScannerModal from "./ScannerModal";
+
+
 import { CardColumns } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import CategoryCard from './CategoryCard';
@@ -77,6 +80,19 @@ const settings = {
     };
 
 
+
+
+  const [showScannerModal , setShowScannerModal] = useState(false);
+  const closeScannerModal = () => setShowScannerModal(false);
+  const openScannerModal  = () => setShowScannerModal(true);
+
+  const [result, setResult] = useState(null);
+
+  const onDetected = result => {
+    alert(result);
+    setResult(result);
+  };
+
     return(
 
 <div>
@@ -85,6 +101,16 @@ const settings = {
 <Navbar.Brand>{store.name}</Navbar.Brand>
     <Nav className="mr-auto">
     </Nav>
+
+      { showScannerModal && <ScannerModal showScannerModal={showScannerModal} closeScannerModal={closeScannerModal} onDetected={onDetected}  /> }
+
+      <button onClick={openScannerModal}>Scan</button>
+
+
+
+
+
+
     <Form onSubmit={searchOffers} inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
       <Button type="submit" variant="outline-light">Search</Button>
