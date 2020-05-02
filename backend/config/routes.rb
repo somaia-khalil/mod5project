@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/stores/:id/categories" , to: "stores#category_index"
   get "/stores/:id/categories/:category_id" , to: "stores#category_show"
   get "/stores/:id/categories/:category_id/offers" , to: "stores#offer_index"
+  get "/stores/:id/offers/search/:barcode" , to: "stores#offer_search"
 
 
   get "/deliveries" , to: "deliveries#index"

@@ -30,6 +30,8 @@ import CategoryCard from './CategoryCard';
 import CategoryDetails from './CategoryDetails';
 import OfferCards from './OfferCards';
 
+import OfferModal from './OfferModal';
+
 
 
 
@@ -81,17 +83,27 @@ const settings = {
 
 
 
+   const [showOfferModal , setShowOfferModal] = useState(false);
+   const closeOfferModal = () => setShowOfferModal(false);
+   const openOfferModal  = () => setShowOfferModal(true);
+
 
   const [showScannerModal , setShowScannerModal] = useState(false);
   const closeScannerModal = () => setShowScannerModal(false);
   const openScannerModal  = () => setShowScannerModal(true);
 
-  const [result, setResult] = useState(null);
+  const [offer, setOffer] = useState(null);
 
-  const onDetected = result => {
-    alert(result);
-    setResult(result);
+  const onDetected = barcode => {
+     fetch(`http://localhost:3000/stores/${props.match.params.store_id}/offers/search/${barcode}`)
+          .then(res => res.json())
+          .then(offer => {
+            setOffer(offer)
+            if (offer)
+               openOfferModal()
+          })
   };
+
 
     return(
 
@@ -102,7 +114,8 @@ const settings = {
     <Nav className="mr-auto">
     </Nav>
 
-      { showScannerModal && <ScannerModal showScannerModal={showScannerModal} closeScannerModal={closeScannerModal} onDetected={onDetected}  /> }
+      { offer && <OfferModal showOfferModal={showOfferModal} closeOfferModal={closeOfferModal} offer={offer} /> }
+      { showScannerModal && <ScannerModal showScannerModal={showScannerModal} closeScannerModal={closeScannerModal} onDetected={onDetected} /> }
 
       <button onClick={openScannerModal}>Scan</button>
 
