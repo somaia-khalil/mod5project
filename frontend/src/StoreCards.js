@@ -1,6 +1,8 @@
 import React, {  useEffect } from 'react';
 import { connect } from 'react-redux';
 import './storepic.css'
+import LightSpeed from 'react-reveal/LightSpeed';
+
 
 
 import { Link } from "react-router-dom";
@@ -23,14 +25,15 @@ const StoreCards = (props) => {
       },[])
 
 
-
-
+       
     return(
       <div>
        <div className="over">
         <div class="banner">
+          <LightSpeed left>
           <h1 className="header">Groceries Delivered in 90 Minute </h1>
           <span className="span">Get your healthy foods & snacks delivered at your doorsteps all day everyday</span>
+          </LightSpeed>
           <div className="outer">
             <div className="inner">
               <span className="location">Location</span>
@@ -40,7 +43,10 @@ const StoreCards = (props) => {
       </div>
 <Container>
        <CardColumns>
+       {console.log(props.stores)}
+
           { props.stores.filter(store => !props.zipcode || store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
+          
        </CardColumns>
 </Container>
 </div>

@@ -8,6 +8,8 @@ import { Form } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
+import Flip from 'react-reveal/Flip';
+
 
 
 const HeaderNavbar = (props) => {
@@ -16,7 +18,9 @@ const HeaderNavbar = (props) => {
 
   <Navbar bg="dark" variant="dark">
     <Navbar.Brand href="/">
+    <Flip left>
       <img alt="" src="/img/logo1.png" height="30" className="d-inline-block align-top"/>
+      </Flip>
     </Navbar.Brand>
     <Nav className="mr-auto">
       <Nav.Link href="/">Stores</Nav.Link>

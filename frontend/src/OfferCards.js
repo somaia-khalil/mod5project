@@ -5,6 +5,8 @@ import "./vegy.css"
 // import LoadingProducts from "../loaders/Products";
 // import NoResults from "../empty-states/NoResults";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
+import Zoom from 'react-reveal/Zoom';
+
 
 const OfferCards = (props) => { 
    let isLoaded = true
@@ -23,7 +25,8 @@ const OfferCards = (props) => {
           component="div"
           className="products"
         >
-         { props.offers.map( offer => <OfferCard offer={offer}/> ) }
+          
+         { props.offers.map( offer => <Zoom><OfferCard offer={offer}/></Zoom> ) }
 
         </CSSTransitionGroup>
       );
