@@ -18,6 +18,8 @@ class Store < ApplicationRecord
          nil
        end
     end
+    
+
 
 
     

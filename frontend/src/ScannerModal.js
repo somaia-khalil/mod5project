@@ -24,8 +24,8 @@ const ScannerModal = (props) => {
   "inputStream": {
     "type": "LiveStream",
     "constraints": {
-      "width": { "min": "100%" },
-      "height": { "min": "100%" },
+      // "width": { "min": "50vw" },
+      // "height": { "min": "50vh" },
       "facingMode": "environment"
     }
   },
