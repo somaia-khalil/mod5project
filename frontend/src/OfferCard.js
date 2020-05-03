@@ -1,7 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import OfferModal from './OfferModal'
-import "./vegy.css"
+import OfferModal from './OfferModal';
 import Counter from "./Counter";
 
 const OfferCard = (props) => {
@@ -13,6 +12,31 @@ const OfferCard = (props) => {
    const [isAdded , setAdded] = useState(false)
    useEffect(() => setAdded(!!props.cart.find(offer => offer.id == props.offer.id)), [props.cart])
    
+
+return (
+                    <div className="col-lg-4 col-xl-3 col-md-6">
+                        <div className="product-fruit-wrapper mb-60">
+                            <div className="product-fruit-img">
+                                <img src={props.offer.product.tradeIdentifiers_image} alt={props.offer.product.name}/>
+                                <div className="product-furit-action">
+                                    <a className="furit-animate-left" title="Add To Cart" href="/#">
+                                        <i className="pe-7s-cart"></i>
+                                    </a>
+                                    <a className="furit-animate-right" title="Wishlist" href="/#">
+                                        <i className="pe-7s-like"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="product-fruit-content text-center">
+                                <h4><a href="/product-details.html">{props.offer.product.name}</a></h4>
+                                <span>${props.offer.price}</span>
+                            </div>
+                        </div>
+                    </div>
+)
+
+
+/*
 
     return (
       <div className="product">
@@ -41,6 +65,9 @@ const OfferCard = (props) => {
         </div>
       </div>
     );
+*/
+
+
   }
 
 

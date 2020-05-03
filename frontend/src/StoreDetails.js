@@ -32,6 +32,8 @@ import OfferCards from './OfferCards';
 
 import OfferModal from './OfferModal';
 
+import CategoryCards from './CategoryCards';
+
 
 
 
@@ -111,6 +113,18 @@ const settings = {
 
     return(
 
+      <Switch>
+               <Route exact path="/stores/:store_id/categories/:category_id" render={routerProps => <CategoryDetails {...routerProps}/>} />
+               <Route exact path="/stores/:store_id/" render={routerProps => <CategoryCards store_id={props.match.params.store_id} categories={categories}/>} />
+      </Switch>
+)
+
+
+
+
+
+/*
+
 <div>
 
 <Navbar bg="primary" variant="dark">
@@ -138,7 +152,7 @@ const settings = {
 
 
 
- {/* <CategoryAccordion store={props.match.params.id} categories={categories} /> */}
+//<CategoryAccordion store={props.match.params.id} categories={categories} /> 
 
 <Container>
             <Switch>
@@ -157,6 +171,7 @@ const settings = {
 
 )
 
+*/
 
 }
 

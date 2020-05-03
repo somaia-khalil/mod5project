@@ -1,6 +1,8 @@
 import React, {  useEffect } from 'react';
 import { connect } from 'react-redux';
-import './storepic.css'
+
+
+
 import LightSpeed from 'react-reveal/LightSpeed';
 
 
@@ -24,12 +26,26 @@ const StoreCards = (props) => {
           })
       },[])
 
+    return (
+        <div className="banner-area pt-90 pb-160 fix">
+            <div className="container">
+                <div className="row">
+                   { props.stores.filter(store => !props.zipcode || store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
+                </div>
+            </div>
+        </div>
+)
 
-       
+
+
+
+
+
+/*
     return(
       <div>
        <div className="over">
-        <div class="banner">
+        <div className="banner">
           <LightSpeed left>
           <h1 className="header">Groceries Delivered in 90 Minute </h1>
           <span className="span">Get your healthy foods & snacks delivered at your doorsteps all day everyday</span>
@@ -51,6 +67,7 @@ const StoreCards = (props) => {
 </Container>
 </div>
     )
+*/
 }
 
 const mapStateToProps = state => {

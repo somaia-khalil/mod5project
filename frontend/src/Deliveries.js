@@ -5,7 +5,9 @@ import { Row } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 import { Link } from "react-router-dom";
 import Delivery from "./Delivery";
-import'./cardOffer.css'
+
+
+
 import { Accordion } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';

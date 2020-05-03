@@ -13,6 +13,9 @@ import OfferCard from './OfferCard';
 import OfferCards from './OfferCards';
 
 
+import CategoryCards from './CategoryCards';
+
+
 
 const CategoryDetails = (props) => {
 
@@ -36,7 +39,17 @@ const CategoryDetails = (props) => {
       },[props.match.params.store_id , props.match.params.category_id])
 
 
-   return (
+   return (<div>
+
+    <CategoryCards store_id={props.match.params.store_id} categories={category.categories}/>
+
+    <OfferCards offers={offers}/>
+
+</div>)
+
+
+/*
+(
  <Container>
  <h1> {category.name} </h1>
        <CardColumns>
@@ -47,6 +60,7 @@ const CategoryDetails = (props) => {
 
 </Container>
     )
+*/
 }
 
 

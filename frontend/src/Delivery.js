@@ -8,7 +8,7 @@
     import OfferCard from './OfferCard';
     import React, { Component } from "react";
     import { Link } from "react-router-dom";
-    import'./cardOffer.css'
+
     import Order from './Order'
 
 const Delivery = (props) => {
