@@ -9,10 +9,10 @@ const StoreCard = (props) => {
     return(
                      <div className="col-lg-4 col-md-4">
                         <div className="furits-banner-wrapper mb-30 wow fadeInUp">
-                            <img src="/img/wegmans.jpg" alt={props.store.name}/>
+                            <img src="/img/wegmans3.png" alt={props.store.name}/>
                             <div className="furits-banner-content">
-                                <h4>{props.store.name}</h4>
-                                <p> {props.store.street}, {props.store.zip} {props.store.city}, {props.store.county} {props.store.state_name}</p>
+                                <h4 style={{"color":"black"}}>{props.store.name}</h4>
+                                <p style={{"color":"black"}}> {props.store.street}, {props.store.zip} {props.store.city}, {props.store.county} {props.store.state_name}</p>
                                 <a className="furits-banner-btn btn-hover" href={`/stores/${props.store.id}`}>Shop Now</a>
                             </div>
                         </div>
