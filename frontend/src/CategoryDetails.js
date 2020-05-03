@@ -21,7 +21,7 @@ const CategoryDetails = (props) => {
 
     const [category, setCategory] = useState({name: "" , categories: []});
     useEffect(() => {
-        fetch(`http://localhost:3000/stores/${props.match.params.store_id}/categories/${props.match.params.category_id}`)
+        fetch(`https://${window.location.hostname}:3000/stores/${props.match.params.store_id}/categories/${props.match.params.category_id}`)
           .then(res => res.json())
           .then(category => {
             setCategory(category)
@@ -31,7 +31,7 @@ const CategoryDetails = (props) => {
 
     const [offers, setOffers] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:3000/stores/${props.match.params.store_id}/categories/${props.match.params.category_id}/offers`)
+        fetch(`https://${window.location.hostname}:3000/stores/${props.match.params.store_id}/categories/${props.match.params.category_id}/offers`)
           .then(res => res.json())
           .then(offers => {
             setOffers(offers)

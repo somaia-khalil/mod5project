@@ -17,15 +17,15 @@ const handleRegister = (e) => {
     let form = e.target
     e.preventDefault()
 
-    fetch("http://localhost:3000/users",{
+    fetch(`https://${window.location.hostname}:3000/users`,{
       method: "POST",
       headers:{
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email: form[1].value,
-        password: form[2].value,
-        password_confirmation: form[3].value
+        email: form[0].value,
+        password: form[1].value,
+        password_confirmation: form[2].value
       })
     })
     .then(res => res.json())
@@ -35,6 +35,39 @@ const handleRegister = (e) => {
       // localStorage.setItem("token", userInfo.token)
     })
   }
+
+   return props.showRegisterModal ?
+   (
+  <div className="modal fade show" style={{"display" : "block" , "z-index" : "999999999"}} aria-modal="true">
+    <div className="modal-dialog modal-xl">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h4 className="modal-title">Register</h4>
+        </div>
+        <div className="modal-body login-form-container">
+
+
+
+                                    <form onSubmit={handleRegister}>
+                                        <input name="user-email" placeholder="Email" type="email"/>
+                                        <input type="password" name="user-password" placeholder="Password"/>
+                                        <input type="password" name="user-password-confirmation" placeholder="Password Confirmation"/>
+                                        <div className="button-box">
+                                            <button type="submit" className="default-btn floatright">Register</button>
+                                            <button type="button" className="default-btn floatleft" data-dismiss="modal" onClick={props.closeRegisterModal}>Close</button>
+                                        </div>
+                                    </form>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+)
+:
+(null)
+
+
 
    return (
   <Modal show={props.showRegisterModal} onHide={props.closeRegisterModal}>

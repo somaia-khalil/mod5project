@@ -14,7 +14,6 @@ class ApplicationController < ActionController::API
     def current_user
       if decoded_token
         user_id = decoded_token["user_id"]
-        p "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm #{user_id}"
         @user = User.find(user_id)
       end
     end

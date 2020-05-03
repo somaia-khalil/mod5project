@@ -9,7 +9,7 @@
     import React, { Component } from "react";
     import { Link } from "react-router-dom";
 
-    import Order from './Order'
+
 
 const Delivery = (props) => {
         return (
@@ -35,7 +35,7 @@ const Delivery = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                 { props.delivery.orders.map(order => <Order order={order}/>) }
+                 { props.delivery.orders.map(order => /*<Order order={order}/>*/) }
                 </tbody>
                 <tfoot>
                   <tr>

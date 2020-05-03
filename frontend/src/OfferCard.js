@@ -7,7 +7,7 @@ const OfferCard = (props) => {
 
    const [showOfferModal , setShowOfferModal] = useState(false);
    const closeOfferModal = () => setShowOfferModal(false);
-   const openOfferModal  = () => setShowOfferModal(true);
+   const openOfferModal  = (e) => {e.preventDefault(); setShowOfferModal(true);};
    const [amount , setAmount] = useState(0)
    const [isAdded , setAdded] = useState(false)
    useEffect(() => setAdded(!!props.cart.find(offer => offer.id == props.offer.id)), [props.cart])
@@ -15,6 +15,7 @@ const OfferCard = (props) => {
 
 return (
                     <div className="col-lg-4 col-xl-3 col-md-6">
+                        <OfferModal showOfferModal={showOfferModal} closeOfferModal={closeOfferModal} offer={props.offer} />
                         <div className="product-fruit-wrapper mb-60">
                             <div className="product-fruit-img">
                                 <img src={props.offer.product.tradeIdentifiers_image} alt={props.offer.product.name}/>
@@ -28,7 +29,7 @@ return (
                                 </div>
                             </div>
                             <div className="product-fruit-content text-center">
-                                <h4><a href="/product-details.html">{props.offer.product.name}</a></h4>
+                                <h4><a href={`/offers/${props.offer.id}`}>{props.offer.product.name}</a></h4>
                                 <span>${props.offer.price}</span>
                             </div>
                         </div>

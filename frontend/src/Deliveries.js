@@ -4,7 +4,6 @@ import { CardColumns } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 import { Link } from "react-router-dom";
-import Delivery from "./Delivery";
 
 
 

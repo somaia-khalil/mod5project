@@ -8,7 +8,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HeaderNavbar from './HeaderNavbar';
 import StoreCards from './StoreCards';
 import StoreDetails from './StoreDetails';
-import Deliveries from './Deliveries';
+
+// import Deliveries from './Deliveries';
 
 
 
@@ -16,6 +17,8 @@ import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import ZipcodeModal from './ZipcodeModal';
 import Cart from './Cart';
+
+import OfferDetails from './OfferDetails';
 
 
 function App() {
@@ -25,9 +28,15 @@ function App() {
 
             <HeaderNavbar/>
 
+         <LoginModal/>
+         <RegisterModal/>
+         <ZipcodeModal/>
+
             <Switch>
+               <Route path="/offers/:offer_id" render={routerProps => <OfferDetails {...routerProps}/>} ></Route>
                <Route path="/stores/:store_id" render={routerProps => <StoreDetails {...routerProps}/>} ></Route>
                <Route exact path="/stores"><StoreCards/></Route>
+               <Route exact path="/cart"><Cart/></Route>
                <Route exact path="/"><StoreCards/></Route>
             </Switch>
 
@@ -42,9 +51,6 @@ function App() {
 
          <HeaderNavbar/>
 
-         <LoginModal/>
-         <RegisterModal/>
-         <ZipcodeModal/>
 
             <Switch>
        //<Route  path="/stores/:id/categories/:categoryId" render={(routerProps) => <StoreCategory {...routerProps}/>} ></Route> 

@@ -9,26 +9,28 @@ import { Modal } from 'react-bootstrap';
 
 const OfferModal = (props) => {
 
-   const addToCart = () => {
-      props.saveToCart(props.offer)
-      props.closeOfferModal()
+
+ const [offer, setOffer] = useState(null);
+    useEffect(() => {
+        fetch(`https://${window.location.hostname}:3000/offers/${props.match.params.offer_id}`)
+          .then(res => res.json())
+          .then(offer => {
+            setOffer(offer)
+          })
+      },[props.match.params.offer_id])
+
+
+
+   const addToCart = (e) => {
+      e.preventDefault()
+      props.saveToCart(offer)
     }
 
-   return props.showOfferModal ?
-   (
-  <div className="modal fade show" style={{"display" : "block" , "z-index" : "999999999"}} aria-modal="true">
-    <div className="modal-dialog modal-xl">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h4 className="modal-title">{props.offer.product.name}</h4>
-        </div>
-        <div className="modal-body">
+   return offer ? (
+<div>     
 
 
-                       
-
-
-		<div className="breadcrumb-area pt-205 pb-210" style="background-image: url(assets/img/bg/breadcrumb.jpg)">
+		<div className="breadcrumb-area pt-205 pb-210" style={{"background-image": "url(/assets/img/bg/breadcrumb.jpg)"}}>
             <div className="container">
                 <div className="breadcrumb-content text-center">
                     <h2>product details</h2>
@@ -44,12 +46,12 @@ const OfferModal = (props) => {
                 <div className="row">
                     <div className="col-md-12 col-lg-7 col-12">
                         <div className="product-details-5 pr-70">
-                            <img src="assets/img/product-details/l1-details-5.png" alt=""/>
+                            <img src={offer.product.tradeIdentifiers_image} alt=""/>
                         </div>
                     </div>
                     <div className="col-md-12 col-lg-5 col-12">
                         <div className="sidebar-active product-details-content">
-                            <h3>Handcrafted Supper Mug</h3>
+                            <h3>{offer.product.name}</h3>
                             <div className="rating-number">
                                 <div className="quick-view-rating">
                                     <i className="pe-7s-star red-star"></i>
@@ -63,38 +65,19 @@ const OfferModal = (props) => {
                                 </div>
                             </div>
                             <div className="details-price">
-                                <span>$120.00</span>
+                                <span>${offer.price}</span>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmol tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veni quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
-                            <div className="product-color-2">
-                                <h4 className="details-title">Color*</h4>
-                                <div className="product-color-style2">
-                                    <ul>
-                                        <li className="orange"></li>
-                                        <li className="blue2"></li>
-                                        <li className="pink"></li>
-                                        <li className="yellow"></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="product-size-2">
-                                <h4 className="details-title">Size*</h4>
-                                <div className="product-size-style2">
-                                    <ul>
-                                        <li><a href="#">xl</a></li>
-                                        <li><a href="#">ml</a></li>
-                                        <li><a href="#">m</a></li>
-                                        <li><a href="#">sl</a></li>
-                                        <li><a href="#">ls</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <p>{offer.product.brand}</p>
+                            <p>{offer.product.description}</p>
+                            <p>{offer.product.countryOfOrigin}</p>
+                            
+                            
                             <div className="quickview-plus-minus">
                                 <div className="cart-plus-minus">
                                     <input type="text" value="02" name="qtybutton" className="cart-plus-minus-box"/>
                                 </div>
                                 <div className="quickview-btn-cart">
-                                    <a className="btn-hover-black" href="#">add to cart</a>
+                                    <a onClick={addToCart} className="btn-hover-black" href="">add to cart</a>
                                 </div>
                                 <div className="quickview-btn-wishlist">
                                     <a className="btn-hover" href="#"><i className="pe-7s-like"></i></a>
@@ -177,36 +160,9 @@ const OfferModal = (props) => {
 
 
 
-        </div>
-        <div className="modal-footer">
-          <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={props.closeOfferModal}>Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-)
-:
-(null)
+</div>)
+: ("Loading...")
 
-   return (
-      <Modal show={props.showOfferModal} onHide={props.closeOfferModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>{props.offer.product.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <p>Some details of this nice product...</p>
-        <p>Buy now for only ${props.offer.price}!</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.closeOfferModal}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={addToCart}>
-            Add to cart
-          </Button>
-        </Modal.Footer>
-      </Modal>
-   )
 }
 
 

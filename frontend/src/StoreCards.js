@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 
@@ -18,11 +18,13 @@ import StoreCard from './StoreCard';
 
 const StoreCards = (props) => {
 
+  const [stores, setStores] = useState([]);
+
     useEffect(() => {
-        fetch("http://localhost:3000/stores")
+        fetch(`https://${window.location.hostname}:3000/stores`)
           .then(res => res.json())
           .then(stores => {
-           props.saveStores(stores)
+           setStores(stores)
           })
       },[])
 
@@ -30,7 +32,7 @@ const StoreCards = (props) => {
         <div className="banner-area pt-90 pb-160 fix">
             <div className="container">
                 <div className="row">
-                   { props.stores.filter(store => !props.zipcode || store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
+                   { stores.filter(store => !props.zipcode || store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
                 </div>
             </div>
         </div>

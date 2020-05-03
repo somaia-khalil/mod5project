@@ -42,7 +42,7 @@ const StoreDetails = (props) => {
 
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:3000/stores/${props.match.params.store_id}/categories`)
+        fetch(`https://${window.location.hostname}:3000/stores/${props.match.params.store_id}/categories`)
           .then(res => res.json())
           .then(categories => {
             setCategories(categories)
@@ -51,7 +51,7 @@ const StoreDetails = (props) => {
 
     const [store, setStore] = useState({name: ""});
     useEffect(() => {
-        fetch(`http://localhost:3000/stores/${props.match.params.store_id}`)
+        fetch(`https://${window.location.hostname}:3000/stores/${props.match.params.store_id}`)
           .then(res => res.json())
           .then(store => {
             setStore(store)
@@ -64,7 +64,7 @@ const StoreDetails = (props) => {
     const searchOffers = (e) => {
         e.preventDefault()
         let form = e.target
-        fetch(`http://localhost:3000/stores/${props.match.params.store_id}/search/${form[0].value}`)
+        fetch(`https://${window.location.hostname}:3000/stores/${props.match.params.store_id}/search/${form[0].value}`)
           .then(res => res.json())
           .then(offers => {
             setOffers(offers)
@@ -98,7 +98,7 @@ const settings = {
 
   const onDetected = barcode => {
      console.log(barcode)
-     fetch(`http://localhost:3000/stores/${props.match.params.store_id}/offers/search/${barcode}`)
+     fetch(`https://${window.location.hostname}:3000/stores/${props.match.params.store_id}/offers/search/${barcode}`)
           .then(res => res.json())
           .then(offer => {
             console.log(offer)

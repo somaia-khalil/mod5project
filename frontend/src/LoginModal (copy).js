@@ -16,17 +16,14 @@ const LoginModal = (props) => {
     let form = e.target
     e.preventDefault()
 
-
-
-
-    fetch(`https://${window.location.hostname}:3000/login`,{
+    fetch("http://localhost:3000/login",{
       method: "POST",
       headers:{
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email: form[0].value,
-        password: form[1].value
+        email: form[1].value,
+        password: form[2].value
       })
     })
     .then(res => res.json())
@@ -35,14 +32,6 @@ const LoginModal = (props) => {
        props.login(userInfo)
        props.closeLoginModal()
     })
-.catch(function (error) {
-    console.log(error);
-  })
-
-
-
-
-
   }
 
 
@@ -54,19 +43,28 @@ const LoginModal = (props) => {
         <div className="modal-header">
           <h4 className="modal-title">Login</h4>
         </div>
-        <div className="modal-body login-form-container">
+        <div className="modal-body">
 
-                                    <form onSubmit={handleLogin}>
+
+                            <div className="login-form-container">
+                                <div className="login-form">
+                                    <form action="#" method="post">
                                         <input type="text" name="user-name" placeholder="Username"/>
                                         <input type="password" name="user-password" placeholder="Password"/>
                                         <div className="button-box">
+                                            
                                             <button type="submit" className="default-btn floatright">Login</button>
-                                            <button type="button" className="default-btn floatleft" data-dismiss="modal" onClick={props.closeLoginModal}>Close</button>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
+
+
 
         </div>
-        
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={props.closeLoginModal}>Close</button>
+        </div>
       </div>
     </div>
   </div>
