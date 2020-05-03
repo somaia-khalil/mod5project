@@ -10,7 +10,13 @@ threads min_threads_count, max_threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+#port        ENV.fetch("PORT") { 3000 }
+
+ssl_bind '0.0.0.0', '3000', {
+   key: 'localhost.key', #/Users/DevRuby/.ssh/server.key
+   cert: 'localhost.crt', #/Users/DevRuby/.ssh/server.crt
+   verify_mode: 'none' #fix errors due to self-signed certificate
+}
 
 # Specifies the `environment` that Puma will run in.
 #
