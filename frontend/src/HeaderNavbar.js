@@ -22,7 +22,7 @@ const HeaderNavbar = (props) => {
                     <div className="header-bottom-wrapper">
                         <div className="logo-2 ptb-35">
                             <a href="index.html">
-                                <img src="/assets/img/logo/logo-10.png" alt=""/>
+                                <img src="/img/logo1.png" alt=""/>
                             </a>
                         </div>
                         <div className="menu-style-2 handicraft-menu menu-hover">
