@@ -1,26 +1,24 @@
 import React, {useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import OfferModal from './OfferModal';
-import Counter from "./Counter";
+
 
 const OfferCard = (props) => {
 
    const [showOfferModal , setShowOfferModal] = useState(false);
    const closeOfferModal = () => setShowOfferModal(false);
    const openOfferModal  = (e) => {e.preventDefault(); setShowOfferModal(true);};
-   const [amount , setAmount] = useState(0)
-   const [isAdded , setAdded] = useState(false)
-   useEffect(() => setAdded(!!props.cart.find(offer => offer.id == props.offer.id)), [props.cart])
+   
+   
    
 
 return (
                     <div className="col-lg-4 col-xl-3 col-md-6">
-                        <OfferModal showOfferModal={showOfferModal} closeOfferModal={closeOfferModal} offer={props.offer} />
                         <div className="product-fruit-wrapper mb-60">
                             <div className="product-fruit-img">
                                 <img src={props.offer.product.tradeIdentifiers_image} alt={props.offer.product.name}/>
                                 <div className="product-furit-action">
-                                    <a className="furit-animate-left" title="Add To Cart" href="/#">
+                                    <a className="furit-animate-left" title="Add To Cart" href="/#" onClick={e => {e.preventDefault() ; props.addToCart(props.offer,1)}}>
                                         <i className="pe-7s-cart"></i>
                                     </a>
                                     <a className="furit-animate-right" title="Wishlist" href="/#">
@@ -80,7 +78,7 @@ return (
 
 const mapDispatchToProps = dispatch => {
    return {
-      saveToCart: (offer => dispatch({type: 'SAVE_TO_CART' , offer : offer}))
+      addToCart: ((offer , amount) => dispatch({type: 'ADD_TO_CART' , offer : offer , amount : amount}))
 
    };
 };

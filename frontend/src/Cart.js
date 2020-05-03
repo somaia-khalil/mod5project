@@ -63,7 +63,7 @@ return (
                                     </thead>
                                     <tbody>
                                         
-                                        { props.cart.map(order => <CartItem order={order}/>) }
+                                        { props.cart.map(offer => <CartItem offer={offer}/>) }
                                         
                                     </tbody>
                                 </table>
@@ -74,7 +74,7 @@ return (
                                     <div className="cart-page-total">
                                         <h2>Cart totals</h2>
                                         <ul>
-                                            <li>Subtotal<span>100.00</span></li>
+                                            <li>Subtotal<span>${ props.cart.reduce((accum , offer) => accum + offer.price*offer.amount , 0) }</span></li>
                                             <li>Total<span>100.00</span></li>
                                         </ul>
                                         <a href="#">Proceed to checkout</a>

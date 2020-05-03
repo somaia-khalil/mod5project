@@ -28,34 +28,13 @@ const HeaderNavbar = (props) => {
                         <div className="menu-style-2 handicraft-menu menu-hover">
                             <nav>
                                 <ul>
-                                    <li><a href="/#">home</a>
-                                        <ul className="single-dropdown">
-                                            <li><a href="/index.html">Fashion</a></li>
-                                            <li><a href="/index-fashion-2.html">Fashion style 2</a></li>
-                                            <li><a href="/index-fruits.html">fruits</a></li>
-                                            <li><a href="/index-book.html">book</a></li>
-                                            <li><a href="/index-electronics.html">electronics</a></li>
-                                            <li><a href="/index-electronics-2.html">electronics style 2</a></li>
-                                            <li><a href="/index-food.html">food & drink</a></li>
-                                            <li><a href="/index-furniture.html">furniture</a></li>
-                                            <li><a href="/index-handicraft.html">handicraft</a></li>
-                                            <li><a target="_blank" href="/index-smart-watch.html">smart watch</a></li>
-                                            <li><a href="/index-sports.html">sports</a></li>
-                                        </ul>
+                                    <li><a href="/home">home</a>
+                                        
                                     </li>
-                                    <li><a href="/#">pages</a>
-                                        <ul className="single-dropdown">
-                                            <li><a href="/about-us.html">about us</a></li>
-                                            <li><a href="/menu-list.html">menu list</a></li>
-                                            <li><a href="/login.html">login</a></li>
-                                            <li><a href="/register.html">register</a></li>
-                                            <li><a href="/cart.html">cart page</a></li>
-                                            <li><a href="/checkout.html">checkout</a></li>
-                                            <li><a href="/wishlist.html">wishlist</a></li>
-                                            <li><a href="/contact.html">contact</a></li>
-                                        </ul>
+                                    <li><a href="/stores">stores</a>
+                                        
                                     </li>
-                                    <li><a href="/shop.html">shop</a>
+                                    <li><a href="/shop.html">cart</a>
                                         <div className="category-menu-dropdown shop-menu">
                                             <div className="category-dropdown-style category-common2 mb-30">
                                                 <h4 className="categories-subtitle"> shop layout</h4>

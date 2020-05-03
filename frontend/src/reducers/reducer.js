@@ -27,10 +27,21 @@ function customReducer(
           stores: action.stores
         }
 
-      case 'SAVE_TO_CART':
+      case 'ADD_TO_CART':
+        let item = state.cart.find(offer => offer.id === action.offer.id)
+        if (item) {
+           item.amount += action.amount
+           return {...state , cart: state.cart.map(offer => offer.id === action.offer.id ? {...offer,amount: action.amount} : offer) }
+        } 
+        else return {
+          ...state,
+          cart: [...state.cart.filter(offer => offer.id !== action.offer.id) , {...action.offer , amount : action.amount}]
+        }
+
+      case 'DELETE_FROM_CART':
         return {
           ...state,
-          cart: [...state.cart , action.offer]
+          cart: state.cart.filter(offer => offer.id !== action.offer.id)
         }
 
       case 'SAVE_ZIPCODE':

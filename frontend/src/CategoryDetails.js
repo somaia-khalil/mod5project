@@ -39,13 +39,10 @@ const CategoryDetails = (props) => {
       },[props.match.params.store_id , props.match.params.category_id])
 
 
-   return (<div>
+   return (category.categories.length > 0)  ? 
+      (<CategoryCards store_id={props.match.params.store_id} categories={category.categories}/>) : 
+      (<OfferCards offers={offers}/>)
 
-    <CategoryCards store_id={props.match.params.store_id} categories={category.categories}/>
-
-    <OfferCards offers={offers}/>
-
-</div>)
 
 
 /*
