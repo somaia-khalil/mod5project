@@ -11,6 +11,9 @@ import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import Flip from 'react-reveal/Flip';
 
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import CartDropdown from './CartDropdown';
 
 
@@ -30,39 +33,45 @@ const HeaderNavbar = (props) => {
                         <div className="menu-style-2 handicraft-menu menu-hover">
                             <nav>
                                 <ul>
-                                    <li><a href="/home">home</a>
-                                        
-                                    </li>
-                                    <li><a href="/stores">stores</a>
-                                        
-                                    </li>
-                                    <li><a href="/cart">cart</a>
-                                        
-                                    </li>
-                                    <li><a href="/blog.html">blog</a>
-                                        <ul className="single-dropdown">
-                                            <li><a href="/blog.html">blog 3 colunm</a></li>
-                                            <li><a href="/blog-2-col.html">blog 2 colunm</a></li>
-                                            <li><a href="/blog-sidebar.html">blog sidebar</a></li>
-                                            <li><a href="/blog-details.html">blog details</a></li>
-                                            <li><a href="/blog-details-sidebar.html">blog details 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="/contact.html">contact</a></li>
+                                    <li><a href="/">home</a></li>
+                                    <li><a href="/stores" onClick={(e) => props.saveZipcode(null)}>all stores</a></li>
+                                    <li><a href="/stores" onClick={(e) => props.openZipcodeModal()}>local stores</a></li>
+                                    <li><a href="/cart">cart</a></li>
                                 </ul>
                             </nav>
                         </div>
+
+            <Switch><Route path="/stores/:store_id" render={routerProps => (
+                        <div className="handicraft-search">
+                            <button className="search-toggle" onClick={() => props.openSearchModal(routerProps.match.params.store_id)}>
+                                <i className="pe-7s-search s-open"></i>
+                            </button>
+                        </div>)
+            }/></Switch>
+
+            
+
+
                         <div className="furits-login-cart">
+
                             <div className="furits-login">
+                              { props.user ?
                                 <ul>
-                                    <li>
-                                        <a onClick={props.openLoginModal} href="#">Login</a>
-                                    </li>
-                                    <li>
-                                        <a onClick={props.openRegisterModal} href="#">Reg</a>
-                                    </li>
+                                    <li><a onClick={props.logout} href="/home">Logout</a></li>
                                 </ul>
+                               :
+                                <ul>
+                                    <li><a onClick={props.openLoginModal} href="#">Login</a></li>
+                                    <li><a onClick={props.openRegisterModal} href="#">Reg</a></li>
+                                </ul>
+                              }
+
+
                             </div>
+
+
+
+
                             <CartDropdown/>
                         </div>
                     </div>
@@ -71,63 +80,10 @@ const HeaderNavbar = (props) => {
                             <div className="mobile-menu">
                                 <nav id="mobile-menu-active">
                                     <ul className="menu-overflow">
-                                        <li><a href="/#">HOME</a>
-                                            <ul>
-                                                <li><a href="/index.html">Fashion</a></li>
-                                                <li><a href="/index-fashion-2.html">Fashion style 2</a></li>
-                                                <li><a href="/index-fruits.html">Fruits</a></li>
-                                                <li><a href="/index-book.html">book</a></li>
-                                                <li><a href="/index-electronics.html">electronics</a></li>
-                                                <li><a href="/index-electronics-2.html">electronics style 2</a></li>
-                                                <li><a href="/index-food.html">food & drink</a></li>
-                                                <li><a href="/index-furniture.html">furniture</a></li>
-                                                <li><a href="/index-handicraft.html">handicraft</a></li>
-                                                <li><a href="/index-smart-watch.html">smart watch</a></li>
-                                                <li><a href="/index-sports.html">sports</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="/#">pages</a>
-                                            <ul>
-                                                <li><a href="/about-us.html">about us</a></li>
-                                                <li><a href="/menu-list.html">menu list</a></li>
-                                                <li><a href="/login.html">login</a></li>
-                                                <li><a href="/register.html">register</a></li>
-                                                <li><a href="/cart.html">cart page</a></li>
-                                                <li><a href="/checkout.html">checkout</a></li>
-                                                <li><a href="/wishlist.html">wishlist</a></li>
-                                                <li><a href="/contact.html">contact</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="/#">shop</a>
-                                            <ul>
-                                                <li><a href="/shop-grid-2-col.html"> grid 2 column</a></li>
-                                                <li><a href="/shop-grid-3-col.html"> grid 3 column</a></li>
-                                                <li><a href="/shop.html">grid 4 column</a></li>
-                                                <li><a href="/shop-grid-box.html">grid box style</a></li>
-                                                <li><a href="/shop-list-1-col.html"> list 1 column</a></li>
-                                                <li><a href="/shop-list-2-col.html">list 2 column</a></li>
-                                                <li><a href="/shop-list-box.html">list box style</a></li>
-                                                <li><a href="/product-details.html">tab style 1</a></li>
-                                                <li><a href="/product-details-2.html">tab style 2</a></li>
-                                                <li><a href="/product-details-3.html"> tab style 3</a></li>
-                                                <li><a href="/product-details-4.html">sticky style</a></li>
-                                                <li><a href="/product-details-5.html">sticky style 2</a></li>
-                                                <li><a href="/product-details-6.html">gallery style</a></li>
-                                                <li><a href="/product-details-7.html">gallery style 2</a></li>
-                                                <li><a href="/product-details-8.html">fixed image style</a></li>
-                                                <li><a href="/product-details-9.html">fixed image style 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="/#">BLOG</a>
-                                            <ul>
-                                                <li><a href="/blog.html">blog 3 colunm</a></li>
-                                                <li><a href="/blog-2-col.html">blog 2 colunm</a></li>
-                                                <li><a href="/blog-sidebar.html">blog sidebar</a></li>
-                                                <li><a href="/blog-details.html">blog details</a></li>
-                                                <li><a href="/blog-details-sidebar.html">blog details 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="/contact.html"> Contact  </a></li>
+                                    <li><a href="/">home</a></li>
+                                    <li><a href="/stores" onClick={(e) => props.saveZipcode(null)}>all stores</a></li>
+                                    <li><a href="/stores" onClick={(e) => props.openZipcodeModal()}>local stores</a></li>
+                                    <li><a href="/cart">cart</a></li>
                                     </ul>
                                 </nav>							
                             </div>
@@ -171,12 +127,15 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
    return {
       logout: (() => dispatch({type: 'LOGOUT'})),
+      openSearchModal: ((store) => dispatch({type: 'OPEN_SEARCH_MODAL' , store: store})),
+      closeSearchModal: (() => dispatch({type: 'CLOSE_SEARCH_MODAL'})),
       openLoginModal: (() => dispatch({type: 'OPEN_LOGIN_MODAL'})),
       closeLoginModal: (() => dispatch({type: 'CLOSE_LOGIN_MODAL'})),
       openRegisterModal: (() => dispatch({type: 'OPEN_REGISTER_MODAL'})),
       closeRegisterModal: (() => dispatch({type: 'CLOSE_REGISTER_MODAL'})),
       openZipcodeModal: (() => dispatch({type: 'OPEN_ZIPCODE_MODAL'})),
       closeZipcodeModal: (() => dispatch({type: 'CLOSE_ZIPCODE_MODAL'})),
+      saveZipcode: (zipcode => dispatch({type: 'SAVE_ZIPCODE' , zipcode : zipcode})),
    };
 };
 

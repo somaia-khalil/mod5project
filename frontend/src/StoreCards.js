@@ -29,8 +29,16 @@ const StoreCards = (props) => {
       },[])
 
     return (
-        <div className="banner-area pt-90 pb-160 fix">
+
+
+
+
+        <div className="blog-area pt-130 pb-70">
             <div className="container">
+                <div className="section-title-furits text-center mb-95">
+                    <img src="/assets/img/icon-img/49.png" alt=""/>
+                    <h2>Stores</h2>
+                </div>
                 <div className="row">
                    { stores.filter(store => !props.zipcode || store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
                 </div>
@@ -39,37 +47,6 @@ const StoreCards = (props) => {
 )
 
 
-
-
-
-
-/*
-    return(
-      <div>
-       <div className="over">
-        <div className="banner">
-          <LightSpeed left>
-          <h1 className="header">Groceries Delivered in 90 Minute </h1>
-          <span className="span">Get your healthy foods & snacks delivered at your doorsteps all day everyday</span>
-          </LightSpeed>
-          <div className="outer">
-            <div className="inner">
-              <span className="location">Location</span>
-            </div>
-          </div>
-        </div>
-      </div>
-<Container>
-       <CardColumns>
-       {console.log(props.stores)}
-
-          { props.stores.filter(store => !props.zipcode || store.zip == props.zipcode).map( store => <StoreCard store={store}/> )}
-          
-       </CardColumns>
-</Container>
-</div>
-    )
-*/
 }
 
 const mapStateToProps = state => {

@@ -14,37 +14,41 @@ const ZipcodeModal = (props) => {
    const setZipcode = (e) => {
       let form = e.target
       e.preventDefault()
-      props.saveZipcode(form[1].value)
+      props.saveZipcode(form[0].value)
       props.closeZipcodeModal()
     }
 
-   return (
-  <Modal show={props.showZipcodeModal} onHide={props.closeZipcodeModal}>
-      <Form onSubmit={setZipcode}>
-        <Modal.Header closeButton>
-          <Modal.Title>Locate Stores</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-       <Form.Group controlId="formBasicZipcode">
-         <Form.Label>Zipcode 07054 or 14207 </Form.Label>
-       <Form.Control type="zipcode" placeholder="Enter zipcode"/>
-       </Form.Group>
-      </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => {props.closeZipcodeModal() ; props.saveZipcode(null)}}>
-            All Stores
-          </Button>
-          <Button type="submit" variant="primary">
-            Find
-          </Button>
-        </Modal.Footer>
-       </Form>
-     </Modal>
-   )
+
+   return props.showZipcodeModal ?
+   (
+  <div className="modal fade show" style={{"display" : "block" , "z-index" : "999999999"}} aria-modal="true">
+    <div className="modal-dialog modal-xl">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h4 className="modal-title">Search by Area</h4>
+        </div>
+        <div className="modal-body login-form-container">
+
+
+                                    <form onSubmit={setZipcode}>
+                                        <input name="zipcode" placeholder="Zipcode" type="zipcode"/>
+                                        <div className="button-box">
+                                            <button type="submit" className="default-btn floatright">Find</button>
+                                            <button type="button" className="default-btn floatleft" data-dismiss="modal" onClick={props.closeZipcodeModal}>Close</button>
+                                        </div>
+                                    </form>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+)
+:
+(null)
+
+
 }
-
-
-
 
 
 const mapStateToProps = state => {

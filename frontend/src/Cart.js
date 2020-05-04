@@ -77,7 +77,7 @@ return (
                                             <li>Subtotal<span>${ props.cart.reduce((accum , offer) => accum + offer.price*offer.amount , 0) }</span></li>
                                             <li>Total<span>100.00</span></li>
                                         </ul>
-                                        <a href="#">Proceed to checkout</a>
+                                        <a href="/checkout">Proceed to checkout</a>
                                     </div>
                                 </div>
                             </div>

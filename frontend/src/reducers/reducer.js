@@ -15,7 +15,8 @@ function customReducer(
       zipcode: "",
       showLoginModal: false,
       showRegisterModal: false,
-      showZipcodeModal: false
+      showZipcodeModal: false,
+      showSearchModal: false
     },
     action
   ) {
@@ -94,6 +95,18 @@ function customReducer(
         return {
           ...state,
           showZipcodeModal: false
+        }
+   
+
+      case 'OPEN_SEARCH_MODAL':
+        return {
+          ...state,
+          showSearchModal: action.store
+        }
+      case 'CLOSE_SEARCH_MODAL':
+        return {
+          ...state,
+          showSearchModal: null
         }
    
       default:

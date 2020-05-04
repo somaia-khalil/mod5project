@@ -50,7 +50,7 @@ return (
                                     </li>
                                     <li className="cart-btn-wrapper">
                                         <a className="cart-btn btn-hover" href="/cart">view cart</a>
-                                        <a className="cart-btn btn-hover" href="/#">checkout</a>
+                                        <a className="cart-btn btn-hover" href="/checkout">checkout</a>
                                     </li>
                                 </ul>
                             </div>

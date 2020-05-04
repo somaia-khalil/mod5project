@@ -29,11 +29,17 @@ const handleRegister = (e) => {
       })
     })
     .then(res => res.json())
-    .then(userInfo => {
-        console.log(userInfo)
-       props.closeRegisterModal()
-      // localStorage.setItem("token", userInfo.token)
+    .then(registerInfo => {if (!registerInfo.error) {
+          alert("User Created")   //TODO
+          props.closeRegisterModal()
+       } else {
+         alert(registerInfo.error)   //TODO
+       }
     })
+    .catch(function (error) {
+         alert(error)   //TODO
+    })
+
   }
 
    return props.showRegisterModal ?

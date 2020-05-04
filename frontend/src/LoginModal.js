@@ -30,14 +30,17 @@ const LoginModal = (props) => {
       })
     })
     .then(res => res.json())
-    .then(userInfo => {
-        console.log(userInfo)
-       props.login(userInfo)
-       props.closeLoginModal()
+    .then(loginInfo => {
+       if (!loginInfo.error) {
+          props.login(loginInfo)
+          props.closeLoginModal()
+       } else {
+         alert(loginInfo.error)   //TODO
+       }
     })
-.catch(function (error) {
-    console.log(error);
-  })
+    .catch(function (error) {
+         alert(error)   //TODO
+    })
 
 
 

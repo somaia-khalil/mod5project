@@ -1,31 +1,17 @@
 
 import React, {useState, useEffect } from 'react';
-import Quagga from "quagga";
 
+import Quagga from "quagga";
 import './scanner_styles.css'
 
 
-
-
-
-
-import { connect } from 'react-redux';
-
-import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
-import { Modal } from 'react-bootstrap';
-
-
-
-const ScannerModal = (props) => {
+const Scanner = (props) => {
 
   useEffect(() => {
     Quagga.init({
   "inputStream": {
     "type": "LiveStream",
     "constraints": {
-      // "width": { "min": "50vw" },
-      // "height": { "min": "50vh" },
       "facingMode": "environment"
     }
   },
@@ -92,47 +78,12 @@ const ScannerModal = (props) => {
       }
     });
 
-    Quagga.onDetected(detected);
+    Quagga.onDetected(result => props.onDetected(result.codeResult.code));
   }, []);
 
-  const detected = result => {
-    props.closeScannerModal();
-    props.onDetected(result.codeResult.code);
-  };
-
-   return (
-      <Modal show={props.showScannerModal} onHide={props.closeScannerModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Scan Barcode</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-
-    <div id="interactive" className="viewport"/>
-
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.closeScannerModal}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-   )
+   return (<div id="interactive" className="viewport"/>)
 }
 
 
-
-
-const mapStateToProps = state => {
-   return {
-      cart: state.cart
-   };
-};
-
-const mapDispatchToProps = dispatch => {
-   return {
-      saveToCart: (offer => dispatch({type: 'SAVE_TO_CART' , offer : offer}))
-   };
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(ScannerModal);
+export default Scanner;
 

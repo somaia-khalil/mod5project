@@ -16,9 +16,12 @@ import StoreDetails from './StoreDetails';
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import ZipcodeModal from './ZipcodeModal';
+import SearchModal from './SearchModal';
+
 import Cart from './Cart';
 
 import OfferDetails from './OfferDetails';
+import Banner from './Banner';
 
 
 function App() {
@@ -31,13 +34,14 @@ function App() {
          <LoginModal/>
          <RegisterModal/>
          <ZipcodeModal/>
+         <SearchModal/>
 
             <Switch>
                <Route path="/offers/:offer_id" render={routerProps => <OfferDetails {...routerProps}/>} ></Route>
                <Route path="/stores/:store_id" render={routerProps => <StoreDetails {...routerProps}/>} ></Route>
                <Route exact path="/stores"><StoreCards/></Route>
                <Route exact path="/cart"><Cart/></Route>
-               <Route exact path="/"><StoreCards/></Route>
+               <Route exact path="/"><Banner/></Route>
             </Switch>
 
 

@@ -20,7 +20,6 @@ import { Container } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 
 
-import ScannerModal from "./ScannerModal";
 
 
 import { CardColumns } from 'react-bootstrap';
