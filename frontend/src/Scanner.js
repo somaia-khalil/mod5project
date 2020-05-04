@@ -19,8 +19,8 @@ const Scanner = (props) => {
     "patchSize": "medium",
     "halfSample": true
   },
-  "numOfWorkers": 2,
-  "frequency": 10,
+  "numOfWorkers": (navigator.hardwareConcurrency ? navigator.hardwareConcurrency : 4),
+  "frequency": 20,
   "decoder": {
     "readers": ["ean_reader"]
   },

@@ -15,13 +15,14 @@ import Scanner from './Scanner';
 const SearchModal = (props) => {
 
    const onDetected = barcode => {
-     fetch(`https://${window.location.hostname}:3000/stores/${props.match.params.store_id}/offers/search/${barcode}`)
+     props.closeSearchModal()
+     fetch(`https://${window.location.hostname}:3000/stores/${props.showSearchModal}/offers/search/${barcode}`)
           .then(res => res.json())
           .then(offer => {
             console.log(offer)
             
             if (offer)
-               alert(offer)
+               alert(offer.product.name)
             else
                alert("Not found!");
           })
