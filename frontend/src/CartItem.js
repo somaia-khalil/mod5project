@@ -13,7 +13,7 @@ console.log(props.offer)
                                          <tr>
                                             <td className="product-remove"><a href="#" onClick={e => {e.preventDefault() ; props.deleteFromCart(props.offer)}}><i className="pe-7s-close"></i></a></td>
                                             <td className="product-thumbnail">
-                                                <a href="#"><img src={props.offer.product.tradeIdentifiers_image} alt={props.offer.product.name} style={{"height" : "101px"}}/></a>
+                                                <a href={`/offers/${props.offer.id}`}><img src={props.offer.product.tradeIdentifiers_image} alt={props.offer.product.name} style={{"height" : "101px"}}/></a>
                                             </td>
                                             <td className="product-name"><a href={`/offers/${props.offer.id}`}>{props.offer.product.name}</a></td>
                                             <td className="product-price-cart"><span className="amount">${props.offer.price}</span></td>
