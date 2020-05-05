@@ -8596,7 +8596,7 @@ a.bundle-btn {
 .header-sticky-3 {
     left: 0;
     padding: 15px 0 0;
-    position: absolute;
+    /* position: absolute; */
     right: 0;
     top: 0;
     transition: all 0.5s ease 0s;

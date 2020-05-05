@@ -13,6 +13,7 @@ import { CardColumns } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import StoreCard from './StoreCard';
+import Bread from './Bread'
 
 
 
@@ -29,10 +30,8 @@ const StoreCards = (props) => {
       },[])
 
     return (
-
-
-
-
+      <div>
+        <Bread />
         <div className="blog-area pt-130 pb-70">
             <div className="container">
                 <div className="section-title-furits text-center mb-95">
@@ -44,6 +43,7 @@ const StoreCards = (props) => {
                 </div>
             </div>
         </div>
+      </div>
 )
 
 

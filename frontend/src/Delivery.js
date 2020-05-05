@@ -1,88 +1,113 @@
+import React, {useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
-
-    import { connect } from 'react-redux';
-    import {  useState, useEffect } from 'react';
-    import { CardColumns } from 'react-bootstrap';
-    import { Container } from 'react-bootstrap';
-    import { Row } from 'react-bootstrap';
-    import OfferCard from './OfferCard';
-    import React, { Component } from "react";
-    import { Link } from "react-router-dom";
+import { CardColumns } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
+import OfferCard from './OfferCard';
+import Order from './Order';
 
 
 
-const Delivery = (props) => {
-        return (
-          <React.Fragment>
+import CheckoutModal from './CheckoutModal';
+
+
+import { Link } from "react-router-dom";
+
+
+import { Navbar } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+
+
+
+function Cart(props) {
+
+   const [showCheckoutModal , setShowCheckoutModal] = useState(false);
+   const closeCheckoutModal = () => setShowCheckoutModal(false);
+   const openCheckoutModal  = () => setShowCheckoutModal(true);
+
+
+
+const checkoutCart = () => {
+      if (!props.user) 
+         props.openLoginModal();
+      else
+         openCheckoutModal();
+  }
+
+
+
+
+return (
+
+        <div className="cart-main-area pt-95 pb-100">
             <div className="container">
-              <table id="cart" className="table table-hover table-condensed">
-                <thead>
-                  <tr>
-                    <th style={{ width: "50%" }}>Product</th>
-                    <th style={{ width: "10%" }}>Price</th>
-                    <th
-                      style={{
-                        width: "8 %"
-                      }}
-                    >
-                      Quantity
-                    </th>
-                    <th style={{ width: "22%" }} className="text-center">
-                      Subtotal
-                    </th>
-                    <th style={{ width: "10%" }} >Availabilty</th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                 { props.delivery.orders.map(order => /*<Order order={order}/>*/) }
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td>
-                      <Link to="/products" className="btn btn-warning">
-                        <i className="fa fa-angle-left" /> Continue Shopping
-                      </Link>
-                    </td>
-                    <td colSpan="2" className="hidden-xs" />
-                    <td className="hidden-xs text-center">
-                      <strong>Total: </strong>
-                    </td>
-                    <td>
-                      <Link to="/products" className="btn btn-success btn-block">
-                        Checkout
-                        <i className="fa fa-angle-right" />
-                      </Link>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
+                <div className="row">
+                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h1 className="cart-heading">Cart</h1>
+                        <form action="#">
+                            <div className="table-content table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                         
+                                            <th>images</th>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    { props.delivery.orders.map(order => <Order order={order}/>) }
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div className="row">
+                                <div className="col-md-5 ml-auto">
+                                    <div className="cart-page-total">
+                                        <h2>Order totals</h2>
+                                        <ul>
+                                            <li>Subtotal<span>${ props.cart.reduce((accum , offer) => accum + offer.price*offer.amount , 0) }</span></li>
+                                            <li>Total<span>${props.cart.reduce((accum , offer) => accum + offer.price*offer.amount , 0) }</span></li>
+                                        </ul>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </React.Fragment>
-        );
-      }
-    
-      const mapStateToProps = state => {
-       return {
-          user: state.user,
-          cart: state.cart
-       };
-    };
-    
-    
-    const mapDispatchToProps = dispatch => {
-       return {
-          openLoginModal: (() => dispatch({type: 'OPEN_LOGIN_MODAL'})),
-          closeLoginModal: (() => dispatch({type: 'CLOSE_LOGIN_MODAL'}))
-       };
-    };
-    
-    export default connect(mapStateToProps,mapDispatchToProps)(Delivery);
-    
-    
-    
-    
+        </div>
+)
 
 
+
+}
+        
+      
+const mapStateToProps = state => {
+   return {
+      user: state.user,
+      cart: state.cart
+   };
+};
+
+const mapDispatchToProps = dispatch => {
+   return {
+      saveToCart: (offer => dispatch({type : 'SAVE_TO_CART' , offer : offer})),
+      openLoginModal: (() => dispatch({type: 'OPEN_LOGIN_MODAL'})),
+      closeLoginModal: (() => dispatch({type: 'CLOSE_LOGIN_MODAL'}))
+   };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Cart);
 
 

@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 import CartItem from './CartItem';
-
+import Bread from './Bread'
 
 
 import CheckoutModal from './CheckoutModal';
@@ -42,7 +42,8 @@ const checkoutCart = () => {
 
 
 return (
-
+        <div>
+        <Bread/>
         <div className="cart-main-area pt-95 pb-100">
             <div className="container">
                 <div className="row">
@@ -75,7 +76,7 @@ return (
                                         <h2>Cart totals</h2>
                                         <ul>
                                             <li>Subtotal<span>${ props.cart.reduce((accum , offer) => accum + offer.price*offer.amount , 0) }</span></li>
-                                            <li>Total<span>100.00</span></li>
+                                            <li>Total<span>${props.cart.reduce((accum , offer) => accum + offer.price*offer.amount , 0) }</span></li>
                                         </ul>
                                         <a href="/checkout">Proceed to checkout</a>
                                     </div>
@@ -86,9 +87,8 @@ return (
                 </div>
             </div>
         </div>
+     </div>
 )
-
-
 
 }
         

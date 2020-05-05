@@ -12,7 +12,7 @@ const CategoryCard = (props) => {
                     <div className="col-lg-4 col-md-6">
                         <div className="blog-wrapper mb-30 wow fadeInUp">
                             <div className="blog-img-2">
-                                <a href={`/stores/${props.store_id}/categories/${props.category.id}`}><img alt="" src="https://t1.gstatic.com/images?q=tbn:ANd9GcSCEtOYiXBqGq2eD0OQfdZnYuknN1xnJrCqHpOICY-wYNa_-PL3cMgKI3Z8Jbkhx7B8Tpyrmp7l4Dvj43e9zDk"/></a>
+                                <a href={`/stores/${props.store_id}/categories/${props.category.id}`}><img alt="" src={props.category.img}/></a>
                             </div>
                             <div className="blog-info-wrapper-2 text-center">
                                 <h3><a href={`/stores/${props.store_id}/categories/${props.category.id}`}>{props.category.name}</a></h3>

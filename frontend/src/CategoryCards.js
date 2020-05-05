@@ -18,8 +18,7 @@ import { Container } from 'react-bootstrap';
 
 
 import OfferCard from './OfferCard';
-
-
+import Bread from './Bread'
 
 
 import { CardColumns } from 'react-bootstrap';
@@ -37,7 +36,8 @@ import OfferModal from './OfferModal';
 const CategoryCards = (props) => {
 
     return (
-
+    <div>
+       
         <div className="blog-area pt-130 pb-70">
             <div className="container">
                 <div className="section-title-furits text-center mb-95">
@@ -49,6 +49,7 @@ const CategoryCards = (props) => {
                 </div>
             </div>
         </div>
+    </div>
 )
 
 

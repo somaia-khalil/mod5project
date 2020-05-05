@@ -19,14 +19,30 @@ import CartDropdown from './CartDropdown';
 
 
 const HeaderNavbar = (props) => {
+    
+    
+    const [offers, setOffers] = useState([]);
+
+    const searchOffers = (e) => {
+      
+        e.preventDefault()
+        let form = e.target
+        fetch(`https://${window.location.hostname}:3000/stores/1/search/${form[0].value}`)
+          .then(res => res.json())
+          .then(offers => {
+            setOffers(offers)
+          })
+      }
+
 
     return (
         <header>
+            
             <div className="header-bottom wrapper-padding-2 res-header-sm sticker header-sticky-3 furits-header">
                 <div className="container-fluid">
                     <div className="header-bottom-wrapper">
                         <div className="logo-2 ptb-35">
-                            <a href="index.html">
+                            <a href="/">
                                 <img src="/img/logo1.png" alt=""/>
                             </a>
                         </div>
@@ -41,17 +57,13 @@ const HeaderNavbar = (props) => {
                             </nav>
                         </div>
 
-            <Switch><Route path="/stores/:store_id" render={routerProps => (
+                        <Switch><Route path="/stores/:store_id" render={routerProps => (
                         <div className="handicraft-search">
                             <button className="search-toggle" onClick={() => props.openSearchModal(routerProps.match.params.store_id)}>
                                 <i className="pe-7s-search s-open"></i>
                             </button>
-                        </div>)
-            }/></Switch>
-
-            
-
-
+                        </div>)}/>        
+                         </Switch>
                         <div className="furits-login-cart">
 
                             <div className="furits-login">
@@ -90,7 +102,8 @@ const HeaderNavbar = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+            
         </header>
 )
 

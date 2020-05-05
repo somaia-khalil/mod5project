@@ -18,7 +18,8 @@ class StoresController < ApplicationController
 #    end
 
     def search
-        offers = @store.offers.joins(:product).where(products: {name: params[:q]})
+        offers = @store.offers.joins(:product).where("products.name LIKE ?", "%#{params[:q]}%")
+                                            #  .where(products: {name: params[:q]})
         render json: offers
     end
 

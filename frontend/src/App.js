@@ -9,7 +9,7 @@ import HeaderNavbar from './HeaderNavbar';
 import StoreCards from './StoreCards';
 import StoreDetails from './StoreDetails';
 
-// import Deliveries from './Deliveries';
+import Deliveries from './Deliveries';
 
 
 
@@ -17,6 +17,7 @@ import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import ZipcodeModal from './ZipcodeModal';
 import SearchModal from './SearchModal';
+import Checkout from './Checkout'
 
 import Cart from './Cart';
 
@@ -35,6 +36,7 @@ function App() {
          <RegisterModal/>
          <ZipcodeModal/>
          <SearchModal/>
+  
 
             <Switch>
                <Route path="/offers/:offer_id" render={routerProps => <OfferDetails {...routerProps}/>} ></Route>
@@ -42,9 +44,9 @@ function App() {
                <Route exact path="/stores"><StoreCards/></Route>
                <Route exact path="/cart"><Cart/></Route>
                <Route exact path="/"><Banner/></Route>
+               <Route exact path="/checkout"><Checkout/></Route>
+               <Route exact path="/deliveries"> <Deliveries/></Route>
             </Switch>
-
-
          </Router>
 )
 /*

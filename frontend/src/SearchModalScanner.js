@@ -7,14 +7,12 @@ import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
-import { useHistory } from "react-router-dom";
 
 import Scanner from './Scanner';
 
 
 
 const SearchModal = (props) => {
-  let history = useHistory();
 
    const onDetected = barcode => {
      props.closeSearchModal()
@@ -24,7 +22,7 @@ const SearchModal = (props) => {
             console.log(offer)
             
             if (offer)
-            history.push(`/offers/${offer.id}`)
+               alert(offer.product.name)
             else
                alert("Not found!");
           })
@@ -38,11 +36,26 @@ const SearchModal = (props) => {
     <div className="modal-dialog modal-xl">
       <div className="modal-content">
         <div className="modal-header">
-          <h4 className="modal-title">Scan</h4>
+          <h4 className="modal-title">Search</h4>
         </div>
         <div className="modal-body login-form-container">
+
+
             <Scanner onDetected={onDetected}/>
+
+
+
+                                    <form onSubmit={console.log}>
+                                        <input type="text" name="user-name" placeholder="Username"/>
+                                        <input type="password" name="user-password" placeholder="Password"/>
+                                        <div className="button-box">
+                                            <button type="submit" className="default-btn floatright">Login</button>
+                                            <button type="button" className="default-btn floatleft" data-dismiss="modal" onClick={props.closeSearchModal}>Close</button>
+                                        </div>
+                                    </form>
+
         </div>
+        
       </div>
     </div>
   </div>

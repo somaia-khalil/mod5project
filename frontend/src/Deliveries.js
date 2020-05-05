@@ -4,7 +4,8 @@ import { CardColumns } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import OfferCard from './OfferCard';
 import { Link } from "react-router-dom";
-
+import Delivery from './Delivery'
+import Bread from './Bread'
 
 
 import { Accordion } from 'react-bootstrap';
@@ -26,14 +27,14 @@ function Deliveries(props) {
          return
       }
 
-      fetch("http://localhost:3000/deliveries",{
+      fetch(`https://${window.location.hostname}:3000/deliveries`,{
         method: 'GET',
         headers:{"Authorization": `Bearer ${props.user.token}`}
       })
       .then(res => res.json())
       .then(deliveries => {
         setDeliveries(deliveries)
-        //console.log(deliveries)
+        console.log(deliveries)
       })
      },[props.user])
 
@@ -96,13 +97,15 @@ function Deliveries(props) {
 
 
     return(
+       <div>
+      <Bread/>
 
 <Accordion>
 { deliveries.map(delivery => 
   <Card key ={delivery.id}>
     <Card.Header>
       <Accordion.Toggle as={Button} variant="link" eventKey={delivery.id}>
-         {}
+        Total price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ delivery.orders.reduce((accum , order) => accum + order.offer.price*order.amount , 0) }
 
       </Accordion.Toggle>
     </Card.Header>
@@ -116,6 +119,7 @@ function Deliveries(props) {
 )}
 
 </Accordion>
+</div>
 
     )
 }
