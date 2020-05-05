@@ -13,8 +13,8 @@ threads min_threads_count, max_threads_count
 #port        ENV.fetch("PORT") { 3000 }
 
 ssl_bind '0.0.0.0', '3000', {
-   key: 'localhost.key', #/Users/DevRuby/.ssh/server.key
-   cert: 'localhost.crt', #/Users/DevRuby/.ssh/server.crt
+   key: 'config/server.key', #/Users/DevRuby/.ssh/server.key
+   cert: 'config/server.crt', #/Users/DevRuby/.ssh/server.crt
    verify_mode: 'none' #fix errors due to self-signed certificate
 }
 
