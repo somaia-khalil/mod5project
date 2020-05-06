@@ -9,24 +9,35 @@ export default function reducer(state , action) {
 
 function customReducer(
     state = {
-      stores: [],
       cart: [],
+      wishlist: [],
       user: null,
       zipcode: "",
       showLoginModal: false,
       showRegisterModal: false,
       showZipcodeModal: false,
-      showSearchModal: false
+      showSearchModal: false,
+      showErrorModal: null
     },
     action
   ) {
     switch (action.type) {
 
-      case 'SAVE_STORES':
-        return {
-          ...state,
-          stores: action.stores
+      case 'ADD_TO_WISHLIST':
+        let cartItem = state.wishlist.find(offer => offer.id === action.offer.id)
+        if (cartItem) {
+          cartItem.amount += action.amount
+           return {...state , wishlist: state.wishlist.map(offer => offer.id === action.offer.id ? {...offer,amount: action.amount} : offer) }
         }
+        else return {
+          ...state,
+          wishlist: [...state.wishlist.filter(offer => offer.id !== action.offer.id) , {...action.offer , amount : action.amount}]
+        }
+        case 'DELETE_FROM_WISHLIST':
+          return {
+            ...state,
+            wishlist: state.wishlist.filter(offer => offer.id !== action.offer.id)
+          }
 
       case 'ADD_TO_CART':
         let item = state.cart.find(offer => offer.id === action.offer.id)
@@ -98,6 +109,17 @@ function customReducer(
         }
    
 
+        case 'OPEN_ERROR_MODAL':
+          return {
+            ...state,
+            showErrorModal: action.message
+          }
+        case 'CLOSE_ERROR_MODAL':
+          return {
+            ...state,
+            showErrorModal: null
+          }
+     
       case 'OPEN_SEARCH_MODAL':
         return {
           ...state,

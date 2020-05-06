@@ -102,12 +102,15 @@ const settings = {
         setSearch(true)
       })
   }
-
+  
 
     return(
       <div>
-      <SearchBar searchOffers={searchOffers}/>
+      
       <Bread store={store}/>
+
+      <SearchBar searchOffers={searchOffers} store_id={store.id}/>
+
       {search ?
       <SearchResult offers={offers}/>
       :<Switch>

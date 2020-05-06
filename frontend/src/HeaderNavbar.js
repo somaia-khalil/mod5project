@@ -53,17 +53,12 @@ const HeaderNavbar = (props) => {
                                     <li><a href="/stores" onClick={(e) => props.saveZipcode(null)}>all stores</a></li>
                                     <li><a href="/stores" onClick={(e) => props.openZipcodeModal()}>local stores</a></li>
                                     <li><a href="/cart">cart</a></li>
+                                    <li><a href="/wishlist">wishlist</a></li>
                                 </ul>
                             </nav>
                         </div>
 
-                        <Switch><Route path="/stores/:store_id" render={routerProps => (
-                        <div className="handicraft-search">
-                            <button className="search-toggle" onClick={() => props.openSearchModal(routerProps.match.params.store_id)}>
-                                <i className="pe-7s-search s-open"></i>
-                            </button>
-                        </div>)}/>        
-                         </Switch>
+                        
                         <div className="furits-login-cart">
 
                             <div className="furits-login">
@@ -96,6 +91,7 @@ const HeaderNavbar = (props) => {
                                     <li><a href="/stores" onClick={(e) => props.saveZipcode(null)}>all stores</a></li>
                                     <li><a href="/stores" onClick={(e) => props.openZipcodeModal()}>local stores</a></li>
                                     <li><a href="/cart">cart</a></li>
+                                    <li><a href="/wishlist">wishlist</a></li>
                                     </ul>
                                 </nav>							
                             </div>

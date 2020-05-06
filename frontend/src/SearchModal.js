@@ -26,7 +26,7 @@ const SearchModal = (props) => {
             if (offer)
             history.push(`/offers/${offer.id}`)
             else
-               alert("Not found!");
+              props.openErrorModal(`Barcode ${barcode} not found!`)
           })
      };
 
@@ -35,13 +35,16 @@ const SearchModal = (props) => {
    return props.showSearchModal ?
    (
   <div className="modal fade show" style={{"display" : "block" , "z-index" : "999999999"}} aria-modal="true">
-    <div className="modal-dialog modal-xl">
+    <div className="modal-dialog modal-xl" style={{"min-width" : "80vw"}}>
       <div className="modal-content">
         <div className="modal-header">
-          <h4 className="modal-title">Scan</h4>
+          <h4 className="modal-title">Scan your product barcode</h4>
         </div>
-        <div className="modal-body login-form-container">
+        <div className="modal-body">
             <Scanner onDetected={onDetected}/>
+        </div>
+        <div className="modal-footer">
+        <button type="button" className="default-btn floatleft" data-dismiss="modal" onClick={props.closeSearchModal}>Close</button>
         </div>
       </div>
     </div>
@@ -63,7 +66,8 @@ const mapDispatchToProps = dispatch => {
    return {
       login: (user => dispatch({type: 'LOGIN' , user: user})),
       openSearchModal: ((store) => dispatch({type: 'OPEN_SEARCH_MODAL', store})),
-      closeSearchModal: (() => dispatch({type: 'CLOSE_SEARCH_MODAL'}))
+      closeSearchModal: (() => dispatch({type: 'CLOSE_SEARCH_MODAL'})),
+      openErrorModal: ((message) => dispatch({type: 'OPEN_ERROR_MODAL', message})),
    };
 };
 

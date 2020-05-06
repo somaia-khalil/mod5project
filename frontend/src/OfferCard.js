@@ -21,7 +21,7 @@ return (
                                     <a className="furit-animate-left" title="Add To Cart" href="/#" onClick={e => {e.preventDefault() ; props.addToCart(props.offer,1)}}>
                                         <i className="pe-7s-cart"></i>
                                     </a>
-                                    <a className="furit-animate-right" title="Wishlist" href="/#">
+                                    <a className="furit-animate-right" title="Wishlist" href="/#" onClick={e => {e.preventDefault() ; props.addToWishlist(props.offer,1)}}>
                                         <i className="pe-7s-like"></i>
                                     </a>
                                 </div>
@@ -35,36 +35,6 @@ return (
 )
 
 
-/*
-
-    return (
-      <div className="product">
-         <OfferModal showOfferModal={showOfferModal} closeOfferModal={closeOfferModal} offer={props.offer} />
-        <div className="product-image">
-          <img
-            src={props.offer.product.tradeIdentifiers_image}
-            alt={props.offer.product.name}
-            onClick={openOfferModal}
-          />
-        </div>
-        <h4 className="product-name">{props.offer.product.name}</h4>
-        <p className="product-price">${props.offer.price}</p>
-        <Counter
-          productQuantity ={amount}
-          updateQuantity={setAmount}
-         //  resetQuantity={0}
-        />
-        <div className="product-action">
-          <button
-            className={!isAdded ? "" : "added"}
-            type="button"
-            onClick={()=>props.saveToCart(props.offer)}          >
-            {!isAdded ? "ADD TO CART" : "✔ ADDED"}
-          </button>
-        </div>
-      </div>
-    );
-*/
 
 
   }
@@ -78,7 +48,8 @@ return (
 
 const mapDispatchToProps = dispatch => {
    return {
-      addToCart: ((offer , amount) => dispatch({type: 'ADD_TO_CART' , offer : offer , amount : amount}))
+      addToCart: ((offer , amount) => dispatch({type: 'ADD_TO_CART' , offer : offer , amount : amount})),
+      addToWishlist: ((offer , amount) => dispatch({type: 'ADD_TO_WISHLIST' , offer : offer , amount : amount}))
 
    };
 };

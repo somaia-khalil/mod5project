@@ -12,7 +12,7 @@ import StoreDetails from './StoreDetails';
 import Deliveries from './Deliveries';
 
 
-
+import ErrorModal from  "./ErrorModal"
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import ZipcodeModal from './ZipcodeModal';
@@ -20,6 +20,7 @@ import SearchModal from './SearchModal';
 import Checkout from './Checkout'
 
 import Cart from './Cart';
+import Wishlist from './Wishlist';
 
 import OfferDetails from './OfferDetails';
 import Banner from './Banner';
@@ -36,6 +37,7 @@ function App() {
          <RegisterModal/>
          <ZipcodeModal/>
          <SearchModal/>
+         <ErrorModal/>
   
 
             <Switch>
@@ -43,6 +45,7 @@ function App() {
                <Route path="/stores/:store_id" render={routerProps => <StoreDetails {...routerProps}/>} ></Route>
                <Route exact path="/stores"><StoreCards/></Route>
                <Route exact path="/cart"><Cart/></Route>
+               <Route exact path="/wishlist"><Wishlist/></Route>
                <Route exact path="/"><Banner/></Route>
                <Route exact path="/checkout"><Checkout/></Route>
                <Route exact path="/deliveries"> <Deliveries/></Route>
