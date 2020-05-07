@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import OfferModal from './OfferModal';
+
 
 
 const OfferCard = (props) => {

@@ -28,7 +28,7 @@ import CategoryCard from './CategoryCard';
 import CategoryDetails from './CategoryDetails';
 import OfferCards from './OfferCards';
 
-import OfferModal from './OfferModal';
+
 
 
 

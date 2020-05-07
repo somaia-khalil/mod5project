@@ -7,7 +7,7 @@ import { Modal } from 'react-bootstrap';
 
 
 
-const OfferModal = (props) => {
+const OfferDetails = (props) => {
 
 
  const [offer, setOffer] = useState(null);
@@ -21,21 +21,18 @@ const OfferModal = (props) => {
 
 
 
-   const addToCart = (e) => {
-      e.preventDefault()
-      props.saveToCart(offer)
-    }
+  
 
    return offer ? (
 <div>     
 
 
-		<div className="breadcrumb-area pt-205 pb-210" style={{"background-image": "url(/assets/img/bg/breadcrumb.jpg)"}}>
+		<div className="breadcrumb-area pt-205 pb-210" style={{"background-image": "url(/img/whychose.jpg)"}}>
             <div className="container">
                 <div className="breadcrumb-content text-center">
                     <h2>product details</h2>
                     <ul>
-                        <li><a href="#">home</a></li>
+                        <li><a href="/">home</a></li>
                         <li> product details </li>
                     </ul>
                 </div>
@@ -77,10 +74,10 @@ const OfferModal = (props) => {
                                     <input type="text" value="02" name="qtybutton" className="cart-plus-minus-box"/>
                                 </div>
                                 <div className="quickview-btn-cart">
-                                    <a onClick={addToCart} className="btn-hover-black" href="">add to cart</a>
+                                    <a onClick={e => {e.preventDefault() ; props.addToCart(offer,1)}} className="btn-hover-black" href="">add to cart</a>
                                 </div>
                                 <div className="quickview-btn-wishlist">
-                                    <a className="btn-hover" href="#"><i className="pe-7s-like"></i></a>
+                                    <a className="btn-hover" href="#" onClick={e => {e.preventDefault() ; props.addToWishlist(offer,1)}}><i className="pe-7s-like"></i></a>
                                 </div>
                             </div>
                             <div className="product-details-cati-tag mt-35">
@@ -177,10 +174,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      saveToCart: (offer => dispatch({type: 'SAVE_TO_CART' , offer : offer}))
+    addToCart: ((offer , amount) => dispatch({type: 'ADD_TO_CART' , offer : offer , amount : amount})),
+    addToWishlist: ((offer , amount) => dispatch({type: 'ADD_TO_WISHLIST' , offer : offer , amount : amount}))
+
    };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(OfferModal);
+export default connect(mapStateToProps,mapDispatchToProps)(OfferDetails);
 
 

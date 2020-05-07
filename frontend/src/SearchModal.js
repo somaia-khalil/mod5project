@@ -17,16 +17,15 @@ const SearchModal = (props) => {
   let history = useHistory();
 
    const onDetected = barcode => {
-     props.closeSearchModal()
+    
      fetch(`https://${window.location.hostname}:3000/stores/${props.showSearchModal}/offers/search/${barcode}`)
           .then(res => res.json())
           .then(offer => {
             console.log(offer)
             
-            if (offer)
+            if (offer){
             history.push(`/offers/${offer.id}`)
-            else
-              props.openErrorModal(`Barcode ${barcode} not found!`)
+            props.closeSearchModal()}
           })
      };
 

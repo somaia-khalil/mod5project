@@ -15,7 +15,6 @@ import { Row } from 'react-bootstrap';
 import CategoryCard from './CategoryCard';
 import CategoryDetails from './CategoryDetails';
 import OfferCards from './OfferCards';
-import OfferModal from './OfferModal';
 import CategoryCards from './CategoryCards';
 import SearchBar from './SearchBar'
 import SearchResult from './SearchResult'
