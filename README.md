@@ -1,4 +1,4 @@
-# mod5project
+# Rabbit Cart Shopping Website
 An interactive shopping cart for crowd-based grocery deliveries with a barcode scanner. Please check for real life Demo :
 - Final Project - Shopping Cart
  - Two week solo project
