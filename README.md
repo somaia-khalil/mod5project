@@ -23,4 +23,4 @@ An interactive shopping cart for crowd-based grocery deliveries with a barcode s
   - Challenges:
    - Nested categories with string-based primary keys (id = "cat1-cat2-cat3")
    - Scraping of massive data (over 200 stores with hundreds of categories/sub-categories, offering hundreds of products each)
-   ![]("RbbitCart- project - ERM.jpg")
+   ![](RabbitCartERM.jpg)
