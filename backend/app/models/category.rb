@@ -9,3 +9,4 @@ class Category < ApplicationRecord
        where(level: 1)
     end
 end
+

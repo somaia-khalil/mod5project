@@ -41,3 +41,4 @@ class CategoriesController < ApplicationController
         action = Action.find(params[:id])
     end
 end
+

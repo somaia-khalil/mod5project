@@ -12,3 +12,4 @@ class OffersController < ApplicationController
         @offer = Offer.find(params[:id])
     end
 end
+

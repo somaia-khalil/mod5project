@@ -3,3 +3,4 @@ class User < ApplicationRecord
     has_one :shopper
     has_one :customer
 end
+

@@ -5,3 +5,4 @@ class ProductTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

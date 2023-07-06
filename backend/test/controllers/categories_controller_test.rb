@@ -5,3 +5,4 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 end
+

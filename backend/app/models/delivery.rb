@@ -4,3 +4,4 @@ class Delivery < ApplicationRecord
     has_many :orders
     has_many :offers , through: :orders
 end
+

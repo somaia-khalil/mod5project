@@ -416,3 +416,4 @@ Order.create!(offer_id: Offer.all.first.id,delivery_id: d1.id, available: 5 , am
 
 
  
+

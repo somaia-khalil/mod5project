@@ -3,3 +3,4 @@ class Offer < ApplicationRecord
     belongs_to :store
     has_many :orders 
 end
+

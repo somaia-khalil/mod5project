@@ -5,3 +5,4 @@ class OfferTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

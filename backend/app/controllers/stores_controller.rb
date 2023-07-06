@@ -59,3 +59,4 @@ class StoresController < ApplicationController
         @store = Store.find(params[:id])
     end
 end
+

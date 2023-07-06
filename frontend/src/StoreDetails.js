@@ -177,3 +177,4 @@ const settings = {
 
 
 export default StoreDetails;
+

@@ -55,3 +55,4 @@ const settings = {
 
 
 export default CategorySlider;
+

@@ -5,3 +5,4 @@ class ShopperTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

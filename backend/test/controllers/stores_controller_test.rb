@@ -5,3 +5,4 @@ class StoresControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 end
+

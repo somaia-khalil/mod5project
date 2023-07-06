@@ -3,3 +3,4 @@ class Customer < ApplicationRecord
     has_many :deliveries
     has_many :shoppers, through: :deliveries
 end
+

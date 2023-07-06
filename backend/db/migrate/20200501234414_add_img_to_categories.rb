@@ -3,3 +3,4 @@ class AddImgToCategories < ActiveRecord::Migration[6.0]
     add_column :categories, :img, :string
   end
 end
+

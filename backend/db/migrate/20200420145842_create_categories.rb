@@ -11,3 +11,4 @@ class CreateCategories < ActiveRecord::Migration[6.0]
     add_index :categories, :id, unique: true
   end
 end
+

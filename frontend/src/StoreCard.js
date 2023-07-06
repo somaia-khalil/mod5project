@@ -38,3 +38,4 @@ const StoreCard = (props) => {
 }
 
 export default StoreCard;
+
